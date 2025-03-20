@@ -935,4 +935,62 @@ La priorización se ha realizado utilizando el método MoSCoW (Must have, Should
 
 **Comentarios**: Realizar pruebas de rendimiento con volúmenes de datos realistas. Documentar todas las decisiones de optimización para futuro mantenimiento.
 
-**Enlaces**: Plan de indexación, Informe de análisis de consultas 
+**Enlaces**: Plan de indexación, Informe de análisis de consultas
+
+## Resumen de Estimaciones para US-001
+
+### Tabla de Estimación por Ticket
+
+| ID Ticket | Descripción | Talla | Horas | Sprint |
+|-----------|-------------|-------|-------|--------|
+| T-001.1 | Estructura base del formulario de creación | M | 20 | 1 |
+| T-001.2 | Sistema de plantillas inteligentes | L | 30 | 1 |
+| T-001.3 | Algoritmo de recomendación de plantillas | XL | 40 | 1 |
+| T-001.4 | Procesador de lenguaje natural para sugerencias | XXL | 60 | 1 |
+| T-001.5 | Módulo de optimización por canal | L | 30 | 1 |
+| T-001.6 | Sistema de notificaciones para estados | M | 20 | 1 |
+| T-001.7 | Sistema de programación de publicaciones | M | 20 | 2 |
+| T-001.8 | Módulo de seguimiento de rendimiento | XL | 40 | 2 |
+| T-001.9 | Integración con sistema de aprobación | L | 30 | 2 |
+| T-001.10 | Tests automatizados | L | 30 | 2 |
+| T-001.11 | Implementación del modelo de datos | M | 20 | 1 |
+| T-001.12 | APIs para gestión de ofertas | XL | 40 | 1 |
+| T-001.13 | Servicio de persistencia y cache | L | 30 | 1 |
+| T-001.14 | Sistema de transacciones para publicación | XL | 40 | 2 |
+| T-001.15 | Índices y optimización de consultas | M | 20 | 2 |
+| **TOTAL** | | | **470** | |
+
+### Tiempo Total Estimado
+
+- **Total de horas**: 470 horas
+- **Días laborables** (jornada de 8 horas): 58.75 días
+- **Tiempo calendario estimado**:
+  - Con 1 recurso por perfil: 11.75 semanas (58.75 días)
+  - Con equipo completo trabajando en paralelo: ~5-6 semanas
+
+## Perfiles Necesarios para US-001
+
+### Tabla de Distribución de Trabajo por Perfil
+
+| Perfil | Tickets Asignados | Horas Totales | % del Esfuerzo |
+|--------|-------------------|---------------|----------------|
+| Frontend Developer | T-001.1, T-001.2 (parcial), T-001.7 (parcial), T-001.8 (parcial), T-001.9 (parcial), T-001.10 (parcial) | ~100 | 21.3% |
+| Backend Developer | T-001.5, T-001.6, T-001.7 (parcial), T-001.9 (parcial), T-001.10 (parcial), T-001.11, T-001.12, T-001.13, T-001.14 | ~170 | 36.2% |
+| Científico de Datos/ML | T-001.2 (parcial), T-001.3, T-001.8 (parcial) | ~70 | 14.9% |
+| Ingeniero de IA/NLP | T-001.4 | 60 | 12.8% |
+| DBA/Especialista BD | T-001.15 | 20 | 4.2% |
+| QA Engineer | T-001.10 (parcial) | ~50 | 10.6% |
+| **TOTAL** | | **470** | **100%** |
+
+### Composición Recomendada del Equipo
+
+Para completar la US-001 en un tiempo óptimo (5-6 semanas), se recomienda la siguiente composición de equipo:
+
+- 2 Desarrolladores Frontend
+- 2-3 Desarrolladores Backend
+- 1 Científico de Datos/ML
+- 1 Ingeniero de IA/NLP
+- 1 DBA/Especialista en Base de Datos (dedicación parcial)
+- 1 Ingeniero QA
+
+Esta composición permite el trabajo en paralelo en los diferentes componentes de la funcionalidad, optimizando el tiempo de entrega sin sacrificar calidad. 
