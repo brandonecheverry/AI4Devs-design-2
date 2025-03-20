@@ -993,4 +993,98 @@ Para completar la US-001 en un tiempo óptimo (5-6 semanas), se recomienda la si
 - 1 DBA/Especialista en Base de Datos (dedicación parcial)
 - 1 Ingeniero QA
 
-Esta composición permite el trabajo en paralelo en los diferentes componentes de la funcionalidad, optimizando el tiempo de entrega sin sacrificar calidad. 
+Esta composición permite el trabajo en paralelo en los diferentes componentes de la funcionalidad, optimizando el tiempo de entrega sin sacrificar calidad.
+
+## Planificación Temporal (Diagrama de Gantt) para US-001
+
+A continuación se presenta la planificación temporal para los tickets de la US-001, organizada por sprints y equipos de trabajo. Cada sprint tiene una duración de 2 semanas.
+
+```
+Sprint 1 (Semanas 1-2)
+-------------------------------------------------------------------
+Semana 1         |         Semana 2
+L  M  X  J  V    |    L  M  X  J  V
+-------------------------------------------------------------------
+T-001.11: Implementación del modelo de datos (Backend)
+[==========]     |
+
+T-001.1: Estructura base del formulario (Frontend)
+[==========]     |
+
+T-001.12: Desarrollo de APIs para gestión de ofertas (Backend)
+[====================|===========]
+
+T-001.2: Sistema de plantillas inteligentes (Frontend + Datos)
+      [===========|===========]
+
+T-001.3: Algoritmo de recomendación de plantillas (Datos)
+         [====================|===========]
+
+T-001.5: Módulo de optimización por canal (Backend)
+               [==|====================]
+
+T-001.6: Sistema de notificaciones (Backend)
+                  |    [==========]
+
+T-001.13: Servicio de persistencia y cache (Backend)
+                  |    [===========]
+
+T-001.4: Procesador de lenguaje natural (IA/NLP)
+[==================================|===========]
+```
+
+```
+Sprint 2 (Semanas 3-4)
+-------------------------------------------------------------------
+Semana 3         |         Semana 4
+L  M  X  J  V    |    L  M  X  J  V
+-------------------------------------------------------------------
+T-001.4: Procesador de lenguaje natural (IA/NLP) (continuación)
+[==========]     |
+
+T-001.5: Módulo de optimización por canal (Backend) (continuación)
+[=====]          |
+
+T-001.13: Servicio de persistencia y cache (Backend) (continuación)
+[===========]    |
+
+T-001.7: Sistema de programación de publicaciones (Frontend + Backend)
+[==========]     |
+
+T-001.14: Sistema de transacciones para publicación (Backend)
+[====================|===========]
+
+T-001.9: Integración con sistema de aprobación (Frontend + Backend)
+      [===========|===========]
+
+T-001.8: Módulo de seguimiento de rendimiento (Datos + Frontend)
+         [====================|===========]
+
+T-001.15: Índices y optimización de consultas (DBA)
+               [==|===========]
+
+T-001.10: Tests automatizados (QA + Desarrollo)
+                  |    [====================]
+```
+
+### Notas sobre la planificación:
+
+1. **Dependencias clave**:
+   - T-001.11 (Modelo de datos) debe completarse antes de T-001.12 (APIs)
+   - T-001.1 (Formulario base) debe estar listo antes de T-001.2 (Plantillas)
+   - T-001.13 (Persistencia) depende parcialmente de T-001.2 y T-001.3
+
+2. **Ruta crítica**:
+   - La implementación del procesador NLP (T-001.4) representa la tarea más extensa
+   - El sistema de transacciones (T-001.14) es crítico para la funcionalidad final
+   - Los tests automatizados (T-001.10) deben realizarse cuando las demás funcionalidades estén implementadas
+
+3. **Paralelización**:
+   - Se han organizado las tareas para maximizar el trabajo paralelo entre los diferentes equipos
+   - Se han considerado las dependencias entre componentes frontend y backend
+
+4. **Recursos**:
+   - La asignación de tareas asume la disponibilidad del equipo recomendado previamente
+   - Algunos miembros del equipo trabajan en múltiples tareas secuencialmente
+
+Esta planificación permite completar todos los tickets de la US-001 en un período de 4 semanas (2 sprints), optimizando el uso de recursos y respetando las dependencias técnicas entre componentes. 
