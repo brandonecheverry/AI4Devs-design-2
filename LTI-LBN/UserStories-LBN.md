@@ -574,43 +574,91 @@ La priorización se ha realizado utilizando el método MoSCoW (Must have, Should
 | US-013 | Gestión de onboarding desde el sistema | Medio | Baja | Media | Integración con sistemas internos |
 | US-015 | Insights sobre tendencias del mercado laboral | Medio | Baja | Alta | Disponibilidad de datos externos |
 
-## Tickets de Trabajo para las Primeras Historias de Usuario
+## Tickets de Trabajo Detallados para US-001: Creación y publicación de ofertas de trabajo con asistencia de IA
 
-### Ticket T-001: Diseño e implementación de interfaz de creación de ofertas
+### Ticket T-001.1: Diseño e implementación de la estructura base del formulario de creación de ofertas
 
-**Descripción**: Diseñar y desarrollar la interfaz de usuario para la creación y edición de ofertas de trabajo, incluyendo el formulario principal, las opciones de plantillas inteligentes y la previsualización de la oferta.
+**Descripción**: Diseñar y desarrollar la estructura básica del formulario de creación de ofertas de trabajo, incluyendo todos los campos necesarios para definir una oferta completa (título, descripción, requisitos, beneficios, ubicación, salario, tipo de contrato, etc.).
 
 **Criterios de Aceptación**:
+- El formulario debe incluir todos los campos obligatorios y opcionales para una oferta completa
 - La interfaz debe ser intuitiva y seguir los estándares de diseño del sistema
-- Debe incluir todos los campos necesarios para definir una oferta completa
-- Debe permitir la selección de plantillas predefinidas y personalizadas
-- Debe mostrar una previsualización en tiempo real de la oferta
-- Debe ser responsive y funcionar correctamente en diferentes dispositivos
-- Debe incluir validaciones para campos obligatorios y formatos
+- Debe soportar la visualización y edición en diferentes dispositivos (responsive)
+- Debe incluir validaciones en tiempo real para cada campo
+- Debe permitir guardar borradores de ofertas incompletas
+- Debe proporcionar mensajes claros de error y ayuda contextual
 
 **Prioridad**: Alta
 
-**Estimación**: XL (40 horas)
+**Estimación**: M (20 horas)
 
 **Asignado a**: Equipo Frontend
 
-**Etiquetas**: Frontend, UI/UX, Sprint 1
+**Etiquetas**: Frontend, UI/UX, Formularios, Sprint 1
 
-**Comentarios**: Coordinar con el equipo de UX para seguir las guías de diseño establecidas. Considerar la accesibilidad en el diseño.
+**Comentarios**: Coordinar con el equipo de UX para aplicar las guías de diseño establecidas. Enfocarse primero en la funcionalidad básica antes de integrar características avanzadas.
 
-**Enlaces**: Documentos de diseño, Wireframes
+**Enlaces**: Wireframes del formulario, Documentación de campos requeridos
 
-### Ticket T-002: Desarrollo del algoritmo de sugerencias IA para mejora de ofertas
+### Ticket T-001.2: Implementación del sistema de plantillas inteligentes
 
-**Descripción**: Implementar el componente de IA que analizará el contenido de las ofertas de trabajo y sugerirá mejoras en la redacción para maximizar su atractivo y efectividad en la captación de talento.
+**Descripción**: Desarrollar el componente que proporcionará plantillas inteligentes de ofertas basadas en ofertas similares exitosas según sector, nivel de experiencia y tipo de posición.
 
 **Criterios de Aceptación**:
-- El algoritmo debe analizar el texto de la oferta y detectar áreas de mejora
-- Debe sugerir cambios específicos en la redacción con explicaciones claras
-- Las sugerencias deben considerar el sector, nivel de experiencia y tipo de posición
-- Debe identificar términos potencialmente sesgados o exclusivos y sugerir alternativas
-- El tiempo de respuesta debe ser inferior a 3 segundos para ofertas de tamaño estándar
-- Debe mejorar continuamente basándose en el feedback y la aceptación de sugerencias
+- El sistema debe ofrecer al menos 10 plantillas por sector (tecnología, finanzas, salud, etc.)
+- Las plantillas deben adaptarse automáticamente según el nivel de experiencia seleccionado
+- Debe permitir visualizar una previsualización de la plantilla antes de aplicarla
+- Debe incluir estadísticas sobre la efectividad histórica de cada plantilla
+- Los usuarios deben poder personalizar y guardar sus propias plantillas
+- Debe incluir un sistema de búsqueda y filtrado de plantillas
+
+**Prioridad**: Alta
+
+**Estimación**: L (30 horas)
+
+**Asignado a**: Equipo Frontend y Datos
+
+**Etiquetas**: Frontend, Plantillas, Datos, Sprint 1
+
+**Comentarios**: Utilizar los datos históricos de ofertas con mejores tasas de conversión. Implementar un sistema de etiquetado para facilitar la búsqueda.
+
+**Enlaces**: Base de datos de plantillas exitosas, Documento de categorización de ofertas
+
+### Ticket T-001.3: Desarrollo del algoritmo de recomendación de plantillas
+
+**Descripción**: Implementar el algoritmo que analizará el contexto de la oferta que se está creando para recomendar las plantillas más adecuadas basadas en datos históricos de éxito.
+
+**Criterios de Aceptación**:
+- El algoritmo debe analizar el título y los primeros campos completados para sugerir plantillas relevantes
+- Debe utilizar datos históricos de efectividad para priorizar las recomendaciones
+- Las recomendaciones deben actualizarse en tiempo real a medida que el usuario completa más campos
+- Debe explicar brevemente por qué se recomienda cada plantilla
+- Las recomendaciones deben considerar tendencias actuales del mercado laboral
+- El sistema debe aprender de las selecciones de los usuarios para mejorar futuras recomendaciones
+
+**Prioridad**: Media
+
+**Estimación**: XL (40 horas)
+
+**Asignado a**: Equipo de Ciencia de Datos
+
+**Etiquetas**: ML, Algoritmo, Recomendación, Sprint 1
+
+**Comentarios**: Implementar un enfoque de aprendizaje automático supervisado utilizando datos históricos. Considerar técnicas de procesamiento de lenguaje natural para analizar similitudes semánticas.
+
+**Enlaces**: Documentación técnica del modelo, Conjunto de datos de entrenamiento
+
+### Ticket T-001.4: Implementación del procesador de lenguaje natural para sugerencias de mejora
+
+**Descripción**: Desarrollar el componente de IA que analizará el texto de la oferta a medida que se escribe y sugerirá mejoras específicas en la redacción para maximizar su atractivo y efectividad.
+
+**Criterios de Aceptación**:
+- El sistema debe analizar el texto en tiempo real y ofrecer sugerencias específicas
+- Debe identificar frases poco atractivas o problemáticas y sugerir alternativas
+- Debe detectar sesgos de género o lenguaje exclusivo y proponer versiones inclusivas
+- Las sugerencias deben incluir una breve explicación de por qué mejorarían la oferta
+- El usuario debe poder aceptar o rechazar cada sugerencia individualmente
+- El sistema debe aprender de las aceptaciones y rechazos para mejorar futuras sugerencias
 
 **Prioridad**: Alta
 
@@ -618,23 +666,23 @@ La priorización se ha realizado utilizando el método MoSCoW (Must have, Should
 
 **Asignado a**: Equipo de IA
 
-**Etiquetas**: Backend, IA, NLP, Sprint 1
+**Etiquetas**: IA, NLP, Análisis de texto, Sprint 1
 
-**Comentarios**: Utilizar el modelo de lenguaje preentrenado acordado. Implementar sistema de feedback para mejorar el modelo con el tiempo.
+**Comentarios**: Utilizar modelos preentrenados de NLP y adaptarlos al contexto específico de ofertas de trabajo. Implementar mecanismos de retroalimentación para mejorar el modelo con el tiempo.
 
-**Enlaces**: Documentación técnica del modelo, Dataset de entrenamiento
+**Enlaces**: Documentación del modelo de lenguaje, Base de conocimiento de mejores prácticas en redacción de ofertas
 
-### Ticket T-003: Implementación del módulo de publicación multicanal
+### Ticket T-001.5: Desarrollo del módulo de optimización por canal
 
-**Descripción**: Desarrollar el componente que permitirá publicar ofertas de trabajo en múltiples canales simultáneamente, con optimización automática del contenido para cada plataforma.
+**Descripción**: Crear el componente que optimizará automáticamente el contenido de la oferta para cada canal de publicación seleccionado, adaptándolo a los requisitos y mejores prácticas de cada plataforma.
 
 **Criterios de Aceptación**:
-- El sistema debe soportar la publicación en al menos 5 canales principales (web corporativa, LinkedIn, InfoJobs, Indeed, Glassdoor)
-- Debe optimizar automáticamente el contenido según los requisitos de cada canal
-- Debe permitir la programación de publicaciones para fechas futuras
-- Debe proporcionar confirmación de publicación exitosa o notificación de errores
-- Debe incluir un panel de control para gestionar el estado de las publicaciones
-- Debe recopilar métricas básicas de rendimiento de cada canal
+- El sistema debe adaptar la oferta a los requisitos específicos de al menos 5 canales principales
+- Debe optimizar automáticamente títulos, descripciones y campos clave según cada plataforma
+- Debe mostrar una previsualización de cómo se verá la oferta en cada canal
+- Debe permitir ediciones manuales específicas para cada canal si el usuario lo desea
+- Debe validar que la oferta adaptada cumple con las restricciones de cada plataforma
+- Debe proporcionar sugerencias específicas para mejorar el rendimiento en cada canal
 
 **Prioridad**: Alta
 
@@ -642,20 +690,249 @@ La priorización se ha realizado utilizando el método MoSCoW (Must have, Should
 
 **Asignado a**: Equipo Backend
 
-**Etiquetas**: Backend, Integraciones, APIs, Sprint 1
+**Etiquetas**: Backend, Integraciones, Optimización, Sprint 1
 
-**Comentarios**: Verificar la documentación actualizada de las APIs de cada plataforma. Implementar sistema de reintentos para publicaciones fallidas.
+**Comentarios**: Mantener actualizada la información sobre requisitos de cada plataforma. Implementar un sistema de plantillas específicas por canal que se puedan actualizar fácilmente.
 
-**Enlaces**: Documentación de APIs, Credenciales de desarrollo
+**Enlaces**: Documentación de requisitos por canal, Ejemplos de ofertas optimizadas
 
-## Estimación de Tickets Adicionales
+### Ticket T-001.6: Implementación del sistema de notificaciones para estados de publicación
 
-| Item | Descripción | Talla | Horas |
-|------|-------------|-------|-------|
-| T-004 | Diseño e implementación del extractor de información de CVs | XXL | 60 |
-| T-005 | Desarrollo del algoritmo de puntuación y matching de candidatos | XL | 40 |
-| T-006 | Implementación del dashboard de candidatos evaluados | L | 30 |
-| T-007 | Diseño e implementación del portal de candidatos | XL | 40 |
-| T-008 | Desarrollo del módulo de seguimiento de estado para candidatos | M | 20 |
-| T-009 | Implementación del sistema de configuración de flujos de trabajo | L | 30 |
-| T-010 | Desarrollo del sistema de roles y permisos | M | 20 | 
+**Descripción**: Desarrollar el sistema que enviará notificaciones en tiempo real sobre el estado de publicación de las ofertas en cada canal, incluyendo confirmaciones, errores y alertas de rendimiento.
+
+**Criterios de Aceptación**:
+- El sistema debe enviar notificaciones en tiempo real cuando cambia el estado de publicación
+- Debe proporcionar información detallada sobre errores de publicación y posibles soluciones
+- Debe permitir configurar preferencias de notificación (en plataforma, email, móvil)
+- Debe incluir un centro de notificaciones centralizado para revisar todo el historial
+- Las notificaciones deben incluir acciones rápidas cuando sea pertinente
+- Debe enviar resúmenes periódicos del estado de todas las ofertas activas
+
+**Prioridad**: Media
+
+**Estimación**: M (20 horas)
+
+**Asignado a**: Equipo Backend
+
+**Etiquetas**: Backend, Notificaciones, UX, Sprint 1
+
+**Comentarios**: Implementar un sistema de colas para gestionar las notificaciones. Asegurar que las notificaciones sean accionables y proporcionen valor real al usuario.
+
+**Enlaces**: Diseño del sistema de notificaciones, Matriz de estados y mensajes
+
+### Ticket T-001.7: Desarrollo del sistema de programación de publicaciones
+
+**Descripción**: Implementar la funcionalidad que permitirá a los usuarios programar la publicación de ofertas para fechas y horas específicas en los diferentes canales.
+
+**Criterios de Aceptación**:
+- Los usuarios deben poder programar publicaciones individuales para cada canal
+- Debe ofrecer opciones de programación recurrente para republiciones automáticas
+- Debe incluir un calendario visual para gestionar todas las publicaciones programadas
+- Debe enviar recordatorios antes de las publicaciones programadas
+- Debe permitir modificar o cancelar publicaciones programadas
+- Debe sugerir horarios óptimos de publicación basados en datos históricos
+
+**Prioridad**: Media
+
+**Estimación**: M (20 horas)
+
+**Asignado a**: Equipo Frontend y Backend
+
+**Etiquetas**: Frontend, Backend, Programación, Sprint 2
+
+**Comentarios**: Implementar un sistema robusto de gestión de trabajos en segundo plano. Considerar diferentes zonas horarias para publicaciones internacionales.
+
+**Enlaces**: Wireframes del calendario de programación, Documentación de la API de programación
+
+### Ticket T-001.8: Implementación del módulo de seguimiento de rendimiento
+
+**Descripción**: Desarrollar el componente que monitoreará y analizará el rendimiento de las ofertas publicadas en cada canal, proporcionando métricas e insights en tiempo real.
+
+**Criterios de Aceptación**:
+- El sistema debe recopilar y mostrar métricas clave para cada oferta (visualizaciones, clics, aplicaciones)
+- Debe presentar comparativas de rendimiento entre diferentes canales
+- Debe incluir gráficos y visualizaciones intuitivas de las tendencias temporales
+- Debe proporcionar alertas cuando una oferta tiene rendimiento por debajo de lo esperado
+- Debe ofrecer recomendaciones accionables para mejorar el rendimiento
+- Debe permitir exportar los datos e informes en múltiples formatos
+
+**Prioridad**: Media
+
+**Estimación**: XL (40 horas)
+
+**Asignado a**: Equipo de Datos y Frontend
+
+**Etiquetas**: Analytics, Frontend, Datos, Sprint 2
+
+**Comentarios**: Implementar mecanismos de seguimiento que respeten la privacidad de los usuarios. Asegurar que los datos se actualicen con la frecuencia adecuada para cada métrica.
+
+**Enlaces**: Diseño del dashboard de rendimiento, Definición de KPIs para ofertas
+
+### Ticket T-001.9: Integración con el sistema de aprobación de ofertas
+
+**Descripción**: Implementar la integración entre el creador de ofertas y el flujo de aprobación para que las ofertas pasen por el proceso de validación por parte de los gerentes antes de su publicación.
+
+**Criterios de Aceptación**:
+- El sistema debe permitir enviar ofertas a aprobación directamente desde la interfaz de creación
+- Debe mostrar claramente el estado de aprobación de cada oferta
+- Debe notificar automáticamente a los aprobadores cuando una oferta requiere revisión
+- Debe permitir a los aprobadores sugerir cambios específicos sin salir del flujo
+- Debe mantener un registro de todas las aprobaciones y cambios solicitados
+- Debe permitir configurar diferentes niveles de aprobación según tipo de oferta
+
+**Prioridad**: Alta
+
+**Estimación**: L (30 horas)
+
+**Asignado a**: Equipo Backend y Frontend
+
+**Etiquetas**: Backend, Frontend, Flujo de trabajo, Sprint 2
+
+**Comentarios**: Implementar un sistema de delegación de aprobaciones para casos donde el aprobador principal no esté disponible. Incluir opciones para acelerar aprobaciones en casos urgentes.
+
+**Enlaces**: Diagrama de flujo del proceso de aprobación, Requisitos de permisos
+
+### Ticket T-001.10: Implementación de tests automatizados para el módulo de creación de ofertas
+
+**Descripción**: Desarrollar una suite completa de tests automatizados (unitarios, integración, end-to-end) para asegurar la calidad y estabilidad del módulo de creación y publicación de ofertas.
+
+**Criterios de Aceptación**:
+- Debe incluir tests unitarios para todos los componentes clave con al menos 80% de cobertura
+- Debe implementar tests de integración para las interacciones entre componentes
+- Debe crear tests end-to-end que simulen flujos completos de usuario
+- Debe incluir tests de rendimiento para asegurar tiempos de respuesta aceptables
+- Los tests deben ejecutarse automáticamente en el pipeline de CI/CD
+- Debe generar informes detallados sobre los resultados de los tests
+
+**Prioridad**: Media
+
+**Estimación**: L (30 horas)
+
+**Asignado a**: Equipo QA y Desarrollo
+
+**Etiquetas**: Testing, QA, Automatización, Sprint 2
+
+**Comentarios**: Priorizar los tests de los flujos críticos y componentes con mayor riesgo. Implementar mocks para servicios externos y dependencias.
+
+**Enlaces**: Plan de pruebas, Documentación de herramientas de testing
+
+### Ticket T-001.11: Implementación del modelo de datos para ofertas de trabajo
+
+**Descripción**: Implementar el modelo de datos ya diseñado que soportará toda la información relacionada con las ofertas de trabajo, incluyendo la creación de tablas, índices, restricciones y procedimientos almacenados necesarios en la base de datos.
+
+**Criterios de Aceptación**:
+- Debe implementar todas las tablas y relaciones definidas en el diagrama ER existente
+- Debe crear todos los índices primarios y secundarios especificados
+- Debe implementar las restricciones de integridad referencial y validaciones definidas
+- Debe incluir los triggers necesarios para el versionado y seguimiento de cambios
+- Debe ejecutar correctamente los scripts de migración en los entornos de desarrollo, pruebas y producción
+- Debe pasar las pruebas de integridad de datos y rendimiento establecidas
+
+**Prioridad**: Alta
+
+**Estimación**: M (20 horas)
+
+**Asignado a**: Equipo Backend
+
+**Etiquetas**: Backend, Base de datos, Implementación, Sprint 1
+
+**Comentarios**: Utilizar el diseño del modelo de datos aprobado según el documento de Especificación de Base de Datos v2.3. Coordinar con el DBA para la revisión de los scripts antes de su ejecución en producción.
+
+**Enlaces**: Diagrama ER aprobado, Especificación de campos de oferta, Scripts de creación de base de datos
+
+### Ticket T-001.12: Desarrollo de APIs para gestión de ofertas de trabajo
+
+**Descripción**: Implementar las APIs RESTful necesarias para todas las operaciones CRUD (Crear, Leer, Actualizar, Eliminar) relacionadas con las ofertas de trabajo y su publicación.
+
+**Criterios de Aceptación**:
+- Debe implementar endpoints para todas las operaciones básicas de ofertas
+- Debe incluir endpoints específicos para la gestión del estado de publicación
+- Debe implementar filtros y ordenación para listados de ofertas
+- Debe incluir validación robusta de datos de entrada
+- Debe implementar paginación para listados grandes
+- Las respuestas deben seguir un formato consistente con códigos de estado HTTP apropiados
+- Debe incluir documentación OpenAPI/Swagger completa
+
+**Prioridad**: Alta
+
+**Estimación**: XL (40 horas)
+
+**Asignado a**: Equipo Backend
+
+**Etiquetas**: Backend, API, REST, Sprint 1
+
+**Comentarios**: Seguir principios RESTful y asegurar que las APIs son versátiles para soportar diferentes casos de uso del frontend.
+
+**Enlaces**: Especificación de API, Documentación de autenticación
+
+### Ticket T-001.13: Implementación del servicio de persistencia y cache para plantillas
+
+**Descripción**: Desarrollar el servicio de backend que gestionará el almacenamiento, recuperación y caché de las plantillas de ofertas, incluyendo las personalizadas y las generadas por IA.
+
+**Criterios de Aceptación**:
+- Debe implementar almacenamiento eficiente para plantillas predefinidas y personalizadas
+- Debe incluir un sistema de caché para mejorar el rendimiento en la recuperación de plantillas
+- Debe soportar metadatos para categorización y búsqueda de plantillas
+- Debe implementar control de versiones para las plantillas
+- Debe incluir mecanismos para actualizar plantillas en uso sin afectar ofertas existentes
+- Debe proporcionar APIs para CRUD de plantillas
+
+**Prioridad**: Alta
+
+**Estimación**: L (30 horas)
+
+**Asignado a**: Equipo Backend
+
+**Etiquetas**: Backend, Persistencia, Caché, Sprint 1
+
+**Comentarios**: Implementar un sistema eficiente de invalidación de caché. Considerar estrategias de precargar plantillas populares.
+
+**Enlaces**: Especificación de servicio de plantillas, Estrategia de caché
+
+### Ticket T-001.14: Desarrollo del sistema de transacciones para publicación en múltiples canales
+
+**Descripción**: Implementar el sistema transaccional que garantizará la integridad y consistencia en la publicación de ofertas en múltiples canales, manejando errores y recuperación.
+
+**Criterios de Aceptación**:
+- Debe implementar operaciones transaccionales para la publicación en múltiples canales
+- Debe manejar fallos parciales permitiendo reintento de canales fallidos
+- Debe mantener un registro detallado de todas las operaciones y sus resultados
+- Debe implementar un sistema de colas para operaciones asíncronas
+- Debe soportar compensación (rollback) cuando sea necesario y posible
+- Debe proporcionar visibilidad del estado de cada transacción
+
+**Prioridad**: Alta
+
+**Estimación**: XL (40 horas)
+
+**Asignado a**: Equipo Backend
+
+**Etiquetas**: Backend, Transacciones, Robustez, Sprint 2
+
+**Comentarios**: Implementar patrones de diseño adecuados para operaciones distribuidas. Considerar la implementación de un servicio de mensajería para operaciones asíncronas.
+
+**Enlaces**: Diagrama de flujo de transacciones, Estrategia de manejo de errores
+
+### Ticket T-001.15: Implementación de índices y optimización de consultas para el rendimiento
+
+**Descripción**: Diseñar e implementar una estrategia de indexación y optimización de consultas para garantizar el rendimiento del sistema con volúmenes grandes de ofertas y usuarios concurrentes.
+
+**Criterios de Aceptación**:
+- Debe identificar y crear índices óptimos para consultas frecuentes
+- Debe optimizar consultas complejas como búsquedas y filtrados avanzados
+- Debe implementar estrategias de particionamiento si es necesario
+- Debe incluir un plan de mantenimiento para índices y estadísticas
+- Debe establecer monitoreo de rendimiento de consultas
+- El tiempo de respuesta para operaciones comunes debe ser inferior a 200ms
+
+**Prioridad**: Media
+
+**Estimación**: M (20 horas)
+
+**Asignado a**: Equipo de Base de Datos
+
+**Etiquetas**: Backend, Base de datos, Optimización, Sprint 2
+
+**Comentarios**: Realizar pruebas de rendimiento con volúmenes de datos realistas. Documentar todas las decisiones de optimización para futuro mantenimiento.
+
+**Enlaces**: Plan de indexación, Informe de análisis de consultas 
