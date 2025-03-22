@@ -1,0 +1,42 @@
+@startuml Diagrama-CasosUso-ATS
+
+' Actores
+:Reclutador: as reclutador
+:Gerente: as gerente
+:Candidato: as candidato
+:Sistema IA: as sistemaIA
+
+' Paquetes y Casos de Uso
+rectangle "Sistema ATS con IA para LTI" {
+    package "Casos de Uso de Alto Nivel" {
+        usecase "Detección Predictiva\nde Talento Tech" as UC1
+        usecase "Pipeline de Contratación\nAcelerado" as UC2
+        usecase "Evaluación Científica\nAdaptativa" as UC3
+    }
+    
+    package "Casos de Uso Fundamentales" {
+        usecase "Creación y Gestión\nde Vacantes" as CU1
+        usecase "Recepción y Organización\nde Candidaturas" as CU2
+        usecase "Seguimiento del\nProceso de Selección" as CU3
+    }
+}
+
+' Relaciones entre actores y casos de uso
+reclutador --> CU1
+reclutador --> CU2
+reclutador --> CU3
+gerente --> CU3
+candidato --> CU2
+sistemaIA --> UC1
+sistemaIA --> UC2
+sistemaIA --> UC3
+
+' Relaciones entre casos de uso
+UC1 ..> CU2 : <<include>>
+UC1 ..> CU3 : <<include>>
+UC2 ..> CU1 : <<include>>
+UC2 ..> CU2 : <<include>>
+UC2 ..> CU3 : <<include>>
+UC3 ..> CU2 : <<include>>
+UC3 ..> CU3 : <<include>>
+@enduml

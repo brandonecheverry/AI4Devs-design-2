@@ -1,0 +1,83 @@
+@startuml Diagrama-CasosUso-Jerarquico
+
+' Actores
+:Reclutador: as reclutador
+:Gerente: as gerente
+:Candidato: as candidato
+:Sistema IA: as sistemaIA
+
+' Sistema principal
+rectangle "Sistema ATS con IA para LTI" {
+    ' Casos de uso de alto nivel
+    package "Casos de Alto Nivel" {
+        usecase "Detección Predictiva de\nTalento Tech Excepcional" as UC1
+        usecase "Pipeline de Contratación\nAcelerado y Automatizado" as UC2
+        usecase "Evaluación Científica\nAdaptativa de Competencias" as UC3
+    }
+    
+    ' Casos de uso fundamentales
+    package "Casos Fundamentales" {
+        usecase "Creación y Gestión\nde Vacantes" as CU1
+        usecase "Recepción y Organización\nde Candidaturas" as CU2
+        usecase "Seguimiento del\nProceso de Selección" as CU3
+    }
+    
+    ' Subcasos de Gestión de Vacantes
+    rectangle "Gestión de Vacantes" {
+        usecase "Crear nueva vacante" as CU1_1
+        usecase "Editar vacante existente" as CU1_2
+        usecase "Publicar vacante" as CU1_3
+        usecase "Cerrar vacante" as CU1_4
+        
+        CU1 ..> CU1_1 : <<include>>
+        CU1 ..> CU1_2 : <<include>>
+        CU1 ..> CU1_3 : <<include>>
+        CU1 ..> CU1_4 : <<include>>
+    }
+    
+    ' Subcasos de Organización de Candidaturas
+    rectangle "Organización de Candidaturas" {
+        usecase "Recibir aplicación" as CU2_1
+        usecase "Almacenar CV y datos" as CU2_2
+        usecase "Clasificar candidatura" as CU2_3
+        usecase "Buscar candidatos" as CU2_4
+        
+        CU2 ..> CU2_1 : <<include>>
+        CU2 ..> CU2_2 : <<include>>
+        CU2 ..> CU2_3 : <<include>>
+        CU2 ..> CU2_4 : <<include>>
+    }
+    
+    ' Subcasos de Seguimiento
+    rectangle "Seguimiento de Selección" {
+        usecase "Actualizar estado\ncandidatura" as CU3_1
+        usecase "Programar entrevista" as CU3_2
+        usecase "Registrar feedback" as CU3_3
+        usecase "Generar oferta" as CU3_4
+        
+        CU3 ..> CU3_1 : <<include>>
+        CU3 ..> CU3_2 : <<include>>
+        CU3 ..> CU3_3 : <<include>>
+        CU3 ..> CU3_4 : <<include>>
+    }
+}
+
+' Relaciones entre actores y casos de uso
+reclutador --> CU1
+reclutador --> CU2
+reclutador --> CU3
+gerente --> CU3
+candidato --> CU2
+sistemaIA --> UC1
+sistemaIA --> UC2
+sistemaIA --> UC3
+
+' Relaciones entre casos de alto nivel y fundamentales
+UC1 ..> CU2 : <<include>>
+UC1 ..> CU3 : <<include>>
+UC2 ..> CU1 : <<include>>
+UC2 ..> CU2 : <<include>>
+UC2 ..> CU3 : <<include>>
+UC3 ..> CU2 : <<include>>
+UC3 ..> CU3 : <<include>>
+@enduml

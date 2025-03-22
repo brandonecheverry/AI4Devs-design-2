@@ -1,0 +1,51 @@
+@startuml Diagrama-CasosUso-Detallado
+
+' Actores
+:Reclutador: as reclutador
+:Candidato: as candidato
+:Sistema IA: as sistemaIA
+
+' Paquete principal
+rectangle "Recepción y Organización de Candidaturas" {
+    ' Caso de uso principal
+    usecase "Recepción y Organización\nde Candidaturas" as CU2
+    
+    ' Subcasos
+    usecase "Recibir aplicación\nde candidato" as CU2_1
+    usecase "Almacenar CV\ny datos personales" as CU2_2
+    usecase "Extraer información\ndel CV" as CU2_3
+    usecase "Asociar candidatura\na vacante" as CU2_4
+    usecase "Clasificar candidato\npor aptitud" as CU2_5
+    usecase "Buscar candidatos\nen base de datos" as CU2_6
+    usecase "Enviar confirmación\nal candidato" as CU2_7
+    
+    ' Extensiones
+    usecase "Verificar duplicados\nde candidatura" as CU2_8
+    usecase "Enriquecer perfil con\ndatos externos" as CU2_9
+}
+
+' Relaciones entre actores y casos de uso
+candidato --> CU2_1
+reclutador --> CU2
+reclutador --> CU2_6
+sistemaIA --> CU2_3
+sistemaIA --> CU2_5
+sistemaIA --> CU2_8
+sistemaIA --> CU2_9
+
+' Relaciones de inclusión
+CU2 ..> CU2_1 : <<include>>
+CU2 ..> CU2_2 : <<include>>
+CU2 ..> CU2_3 : <<include>>
+CU2 ..> CU2_4 : <<include>>
+CU2 ..> CU2_7 : <<include>>
+
+' Relaciones de extensión
+CU2_8 ..> CU2_2 : <<extend>>
+CU2_5 ..> CU2_3 : <<extend>>
+CU2_9 ..> CU2_3 : <<extend>>
+
+' Relaciones de dependencia
+CU2_3 --> CU2_5
+CU2_4 --> CU2_6
+@enduml

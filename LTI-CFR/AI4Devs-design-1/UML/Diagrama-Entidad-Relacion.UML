@@ -1,0 +1,196 @@
+@startuml Diagrama-ER-ATS
+!theme cerulean
+skinparam linetype ortho
+skinparam roundcorner 5
+skinparam shadowing false
+skinparam dpi 300
+skinparam EntityFontSize 14
+skinparam EntityFontName Helvetica
+skinparam EntityBorderColor #2C3E50
+skinparam EntityBackgroundColor #ECF0F1
+
+' Entidades principales
+entity "Usuario" as usuario {
+  * id : SERIAL <<PK>>
+  --
+  * email : VARCHAR(100) <<UQ>>
+  * nombre : VARCHAR(100)
+  * apellidos : VARCHAR(150)
+  * hashed_password : VARCHAR(255)
+  * telefono : VARCHAR(20)
+  * activo : BOOLEAN
+  * fecha_registro : TIMESTAMP
+  * ultimo_login : TIMESTAMP
+  * tipo_usuario : ENUM
+}
+
+entity "Reclutador" as reclutador {
+  * id : SERIAL <<PK>>
+  --
+  * id_usuario : INTEGER <<FK>>
+  * departamento : VARCHAR(100)
+  * especialidad : VARCHAR(100)
+}
+
+entity "Gerente" as gerente {
+  * id : SERIAL <<PK>>
+  --
+  * id_usuario : INTEGER <<FK>>
+  * departamento : VARCHAR(100)
+  * nivel : VARCHAR(50)
+}
+
+entity "Candidato" as candidato {
+  * id : SERIAL <<PK>>
+  --
+  * id_usuario : INTEGER <<FK>>
+  * fecha_nacimiento : DATE
+  * direccion : VARCHAR(255)
+  * ciudad : VARCHAR(100)
+  * pais : VARCHAR(100)
+  * codigo_postal : VARCHAR(20)
+  * disponibilidad : ENUM
+  * pretension_salarial : DECIMAL
+  * fuente_reclutamiento : VARCHAR(100)
+}
+
+entity "Vacante" as vacante {
+  * id : SERIAL <<PK>>
+  --
+  * titulo : VARCHAR(150)
+  * descripcion : TEXT
+  * departamento : VARCHAR(100)
+  * ubicacion : VARCHAR(100)
+  * tipo_contrato : ENUM
+  * modalidad : ENUM
+  * nivel_experiencia : ENUM
+  * rango_salarial_min : DECIMAL
+  * rango_salarial_max : DECIMAL
+  * fecha_publicacion : DATE
+  * fecha_cierre : DATE
+  * estado : ENUM
+  * id_reclutador : INTEGER <<FK>>
+}
+
+entity "Candidatura" as candidatura {
+  * id : SERIAL <<PK>>
+  --
+  * id_candidato : INTEGER <<FK>>
+  * id_vacante : INTEGER <<FK>>
+  * fecha_aplicacion : TIMESTAMP
+  * estado : ENUM
+  * etapa_actual : ENUM
+  * notas : TEXT
+  * fecha_ultima_actualizacion : TIMESTAMP
+}
+
+entity "Documento" as documento {
+  * id : SERIAL <<PK>>
+  --
+  * id_candidatura : INTEGER <<FK>>
+  * tipo : ENUM
+  * nombre_archivo : VARCHAR(255)
+  * archivo_path : VARCHAR(255)
+  * tamano : INTEGER
+  * tipo_mime : VARCHAR(100)
+  * fecha_subida : TIMESTAMP
+}
+
+entity "Habilidad" as habilidad {
+  * id : SERIAL <<PK>>
+  --
+  * nombre : VARCHAR(100) <<UQ>>
+  * categoria : VARCHAR(100)
+  * descripcion : TEXT
+}
+
+entity "CandidatoHabilidad" as candidato_habilidad {
+  * id_candidato : INTEGER <<PK, FK>>
+  * id_habilidad : INTEGER <<PK, FK>>
+  --
+  * nivel : INTEGER
+  * anios_experiencia : DECIMAL
+  * verificado : BOOLEAN
+}
+
+entity "VacanteHabilidad" as vacante_habilidad {
+  * id_vacante : INTEGER <<PK, FK>>
+  * id_habilidad : INTEGER <<PK, FK>>
+  --
+  * es_requerida : BOOLEAN
+  * nivel_minimo : INTEGER
+  * anios_experiencia_min : DECIMAL
+  * peso : INTEGER
+}
+
+entity "Evaluacion" as evaluacion {
+  * id : SERIAL <<PK>>
+  --
+  * id_candidatura : INTEGER <<FK>>
+  * tipo : ENUM
+  * titulo : VARCHAR(150)
+  * fecha_programada : TIMESTAMP
+  * fecha_realizacion : TIMESTAMP
+  * estado : ENUM
+  * duracion_minutos : INTEGER
+  * resultado : DECIMAL
+}
+
+entity "EntrevistaEvaluacion" as entrevista {
+  * id_evaluacion : INTEGER <<PK, FK>>
+  --
+  * id_entrevistador : INTEGER <<FK>>
+  * modalidad : ENUM
+  * ubicacion : VARCHAR(255)
+  * enlace_virtual : VARCHAR(255)
+}
+
+entity "PruebaEvaluacion" as prueba {
+  * id_evaluacion : INTEGER <<PK, FK>>
+  --
+  * tipo_prueba : ENUM
+  * puntuacion_maxima : INTEGER
+  * puntuacion_minima_aprobacion : INTEGER
+  * instrucciones : TEXT
+}
+
+entity "Comentario" as comentario {
+  * id : SERIAL <<PK>>
+  --
+  * id_candidatura : INTEGER <<FK>>
+  * id_usuario : INTEGER <<FK>>
+  * contenido : TEXT
+  * fecha_creacion : TIMESTAMP
+  * etapa_candidatura : ENUM
+  * es_privado : BOOLEAN
+}
+
+entity "Oferta" as oferta {
+  * id : SERIAL <<PK>>
+  --
+  * id_candidatura : INTEGER <<FK>>
+  * salario : DECIMAL
+  * fecha_inicio : DATE
+  * beneficios : TEXT
+  * estado : ENUM
+  * fecha_envio : TIMESTAMP
+  * fecha_respuesta : TIMESTAMP
+  * respuesta_candidato : BOOLEAN
+}
+
+' Relaciones
+usuario ||--o{ reclutador
+usuario ||--o{ gerente
+usuario ||--o{ candidato
+reclutador ||--o{ vacante
+candidato ||--o{ candidatura
+vacante ||--o{ candidatura
+candidatura ||--o{ documento
+candidatura ||--o{ evaluacion
+candidatura ||--o{ comentario
+candidatura ||--o| oferta
+evaluacion ||--o| entrevista
+evaluacion ||--o| prueba
+habilidad }o--o{ candidato : posee >
+habilidad }o--o{ vacante : requiere >
+@enduml
