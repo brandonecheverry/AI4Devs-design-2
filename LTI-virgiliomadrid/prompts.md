@@ -1116,7 +1116,7 @@ Tasa de Retención	≥ 20% de incremento
 
 #prompt20
 
-Ahora imagina que  eres un business analyst con mas de 20 años de experiencia con conocimiento en todas las areas del proyecto y con el contexto completo del proyecto
+Ahora imagina que  eres un business analyst con mas de 20 años de experiencia con conocimiento en todas las areas del proyecto y con el contexto completo del proyecto. quiero que me des unas 5 historias de usuario
 
 "
 ¡Perfecto! 🔥 Como Business Analyst senior, voy a definir 5 historias de usuario para LTIR (Lead Talent Insight Recruit) siguiendo el formato clásico de INVEST (Independent, Negotiable, Valuable, Estimable, Small, Testable).
