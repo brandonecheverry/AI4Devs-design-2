@@ -358,6 +358,380 @@ Utilizamos dos enfoques complementarios:
 
 ---
 
+# Tickets de Trabajo - MVP Sistema LTI
+
+Este documento contiene tickets de trabajo detallados derivados de las historias de usuario del Grupo 1, organizados por sprint de desarrollo conforme al plan del MVP.
+
+---
+
+## Sprint 1 (01/04 - 15/04)
+
+### LTI-001: Configuración Inicial del Proyecto
+**Tipo**: Técnico  
+**Estimación**: 1 día  
+**Descripción**: Configurar repositorio, entorno de desarrollo, CI/CD y estructura inicial del proyecto.  
+**Tareas**:
+- Crear repositorio Git
+- Configurar entorno de desarrollo
+- Configurar pipeline CI/CD básico
+- Definir estructura de carpetas y arquitectura base
+- Documentar estándares de desarrollo
+
+### LTI-002: Backend - API de Registro de Candidato
+**Tipo**: Desarrollo/Backend  
+**Estimación**: 2 días  
+**Relacionado con**: Historia 1  
+**Descripción**: Desarrollar APIs para registro, validación y autenticación de candidatos.  
+**Tareas**:
+- Implementar endpoint de registro
+- Implementar validaciones de datos
+- Crear sistema de confirmación por email
+- Configurar autenticación JWT
+- Desarrollar integración OAuth con LinkedIn
+- Documentar APIs con Swagger
+
+### LTI-003: Frontend - Pantallas de Registro de Candidato
+**Tipo**: Desarrollo/Frontend  
+**Estimación**: 2 días  
+**Relacionado con**: Historia 1  
+**Descripción**: Crear interfaces de usuario para registro y confirmación de cuenta.  
+**Tareas**:
+- Desarrollar pantalla de registro responsiva
+- Implementar formulario con validaciones
+- Crear pantalla de confirmación de email
+- Implementar login social
+- Desarrollar flujo de registro parcial y continuación
+- Probar en diferentes dispositivos
+
+### LTI-004: Backend - API de Listado de Vacantes
+**Tipo**: Desarrollo/Backend  
+**Estimación**: 2 días  
+**Relacionado con**: Historia 5  
+**Descripción**: Desarrollar APIs para listado y filtrado de vacantes disponibles.  
+**Tareas**:
+- Implementar endpoints para listado paginado
+- Crear sistema de filtrado
+- Desarrollar endpoint de búsqueda por palabra clave
+- Implementar ordenación por relevancia/fecha
+- Configurar caché para mejorar rendimiento
+- Documentar APIs
+
+### LTI-005: Frontend - Visualización de Vacantes
+**Tipo**: Desarrollo/Frontend  
+**Estimación**: 3 días  
+**Relacionado con**: Historia 5  
+**Descripción**: Crear componentes de listado y visualización detallada de vacantes.  
+**Tareas**:
+- Desarrollar componente de listado en cards
+- Crear sistema de filtros interactivos
+- Implementar página detallada de vacante
+- Desarrollar sistema de favoritos
+- Crear componente de búsqueda
+- Probar responsividad
+
+### LTI-006: Backend - API de Postulación
+**Tipo**: Desarrollo/Backend  
+**Estimación**: 2 días  
+**Relacionado con**: Historia 6  
+**Descripción**: Desarrollar APIs para permitir postulación a vacantes.  
+**Tareas**:
+- Implementar endpoint de postulación
+- Crear validaciones de elegibilidad
+- Desarrollar sistema de anexos (currículum, carta)
+- Implementar detección de postulaciones duplicadas
+- Crear sistema de cancelación de postulación
+- Desarrollar notificaciones por email
+
+### LTI-007: Frontend - Flujo de Postulación
+**Tipo**: Desarrollo/Frontend  
+**Estimación**: 2 días  
+**Relacionado con**: Historia 6  
+**Descripción**: Crear interfaces para el proceso de postulación a vacantes.  
+**Tareas**:
+- Desarrollar flujo de postulación en etapas
+- Implementar selección de currículum
+- Crear componente de carga de documentos adicionales
+- Desarrollar visualización de resumen antes de la confirmación
+- Implementar confirmación visual y notificaciones
+- Crear opción de cancelación
+
+### LTI-008: Pruebas y QA - Flujo de Registro y Postulación
+**Tipo**: Pruebas  
+**Estimación**: 1 día  
+**Relacionado con**: Historias 1, 5 y 6  
+**Descripción**: Realizar pruebas integradas del flujo completo de registro y postulación.  
+**Tareas**:
+- Definir plan de pruebas
+- Ejecutar pruebas funcionales
+- Validar flujo completo (registro → visualización de vacantes → postulación)
+- Verificar responsividad en diferentes dispositivos
+- Documentar y reportar problemas encontrados
+
+---
+
+## Sprint 2 (16/04 - 30/04)
+
+### LTI-009: Backend - API de Perfil Profesional
+**Tipo**: Desarrollo/Backend  
+**Estimación**: 3 días  
+**Relacionado con**: Historia 3  
+**Descripción**: Desarrollar APIs para gestión de perfil profesional de candidatos.  
+**Tareas**:
+- Implementar CRUD para datos personales
+- Crear endpoints para experiencias profesionales
+- Desarrollar endpoints para formación académica
+- Implementar sistema de habilidades e idiomas
+- Crear cálculo de completitud del perfil
+- Documentar APIs
+
+### LTI-010: Frontend - Creación y Edición de Perfil
+**Tipo**: Desarrollo/Frontend  
+**Estimación**: 3 días  
+**Relacionado con**: Historia 3  
+**Descripción**: Crear interfaces para gestión completa del perfil profesional.  
+**Tareas**:
+- Desarrollar formularios de datos personales
+- Crear interfaz para añadir/editar experiencias profesionales
+- Implementar formularios de formación académica
+- Desarrollar componentes de habilidades e idiomas
+- Crear indicador de progreso de perfil
+- Implementar sistema de sugerencias
+
+### LTI-011: Backend - API Kanban de Candidaturas
+**Tipo**: Desarrollo/Backend  
+**Estimación**: 3 días  
+**Relacionado con**: Historia 15  
+**Descripción**: Desarrollar APIs para visualización y gestión de candidaturas en formato Kanban.  
+**Tareas**:
+- Implementar endpoints para listar candidaturas por etapa
+- Crear sistema de movimiento entre etapas
+- Desarrollar filtros avanzados
+- Implementar ordenación de candidaturas
+- Crear sistema de tiempo real con WebSockets
+- Documentar APIs
+
+### LTI-012: Frontend - Tablero Kanban de Candidaturas
+**Tipo**: Desarrollo/Frontend  
+**Estimación**: 4 días  
+**Relacionado con**: Historia 15  
+**Descripción**: Crear interfaz Kanban interactiva para gestión de candidaturas.  
+**Tareas**:
+- Desarrollar componente Kanban responsivo
+- Implementar drag-and-drop entre columnas
+- Crear cards de candidato con información relevante
+- Desarrollar sistema de filtros y búsqueda
+- Implementar modal de detalles del candidato
+- Crear sistema de actualización en tiempo real
+
+### LTI-013: Pruebas y QA - Perfil y Kanban
+**Tipo**: Pruebas  
+**Estimación**: 1 día  
+**Relacionado con**: Historias 3 y 15  
+**Descripción**: Realizar pruebas de los módulos de perfil profesional y Kanban de candidaturas.  
+**Tareas**:
+- Verificar funcionamiento del perfil en diversos escenarios
+- Probar Kanban con múltiples usuarios simultáneos
+- Validar drag-and-drop y persistencia de datos
+- Probar responsividad y comportamiento móvil
+- Documentar y reportar problemas encontrados
+
+---
+
+## Sprint 3 (01/05 - 15/05)
+
+### LTI-014: Spike Técnico - Extracción de Datos de Currículos
+**Tipo**: Investigación Técnica  
+**Estimación**: 2 días  
+**Relacionado con**: Historia 4  
+**Descripción**: Validar enfoques técnicos para extracción de datos de currículos.  
+**Tareas**:
+- Investigar bibliotecas y herramientas disponibles
+- Probar procesamiento de PDFs, DOCXs y TXTs
+- Evaluar algoritmos de NLP para extracción de información
+- Comparar precisión de diferentes enfoques
+- Desarrollar prueba de concepto
+- Documentar resultados y recomendar enfoque
+
+### LTI-015: Backend - Carga Básica de Documentos
+**Tipo**: Desarrollo/Backend  
+**Estimación**: 2 días  
+**Relacionado con**: Historia 4 (Parte 1)  
+**Descripción**: Desarrollar sistema de carga y almacenamiento de currículos.  
+**Tareas**:
+- Implementar endpoint de carga de archivos
+- Crear sistema de validación de archivos (tipo, tamaño)
+- Desarrollar integración con almacenamiento de objetos
+- Implementar sistema de versionado de documentos
+- Crear mecanismo de procesamiento asíncrono
+- Documentar APIs
+
+### LTI-016: Frontend - Componente de Carga
+**Tipo**: Desarrollo/Frontend  
+**Estimación**: 1 día  
+**Relacionado con**: Historia 4 (Parte 1)  
+**Descripción**: Crear interfaz para carga y gestión de currículos.  
+**Tareas**:
+- Desarrollar componente de carga con drag-and-drop
+- Implementar feedback visual de progreso
+- Crear interfaz para gestionar versiones de currículum
+- Desarrollar visualización de documento cargado
+- Implementar tratamiento de errores amigable
+
+### LTI-017: Backend - Extracción Simple de Datos
+**Tipo**: Desarrollo/Backend  
+**Estimación**: 3 días  
+**Relacionado con**: Historia 4 (Parte 2)  
+**Descripción**: Implementar extracción básica de datos estructurados de currículos.  
+**Tareas**:
+- Desarrollar procesadores para diferentes formatos de archivo
+- Implementar extracción de datos personales básicos
+- Crear sistema de extracción de experiencias profesionales
+- Desarrollar extracción de formación académica
+- Implementar sistema de persistencia de datos extraídos
+- Crear APIs para recuperación de datos extraídos
+
+### LTI-018: Frontend - Validación de Datos Extraídos
+**Tipo**: Desarrollo/Frontend  
+**Estimación**: 1 día  
+**Relacionado con**: Historia 4 (Parte 2)  
+**Descripción**: Crear interfaz para validación y edición de datos extraídos de currículos.  
+**Tareas**:
+- Desarrollar pantalla de visualización de datos extraídos
+- Implementar formularios de corrección/complementación
+- Crear sistema de confirmación de datos
+- Desarrollar indicadores de confianza de la extracción
+- Implementar UX para orientar al usuario en el proceso
+
+### LTI-019: Pruebas y QA - Carga y Extracción Básica
+**Tipo**: Pruebas  
+**Estimación**: 1 día  
+**Relacionado con**: Historia 4 (Partes 1 y 2)  
+**Descripción**: Probar sistema de carga y extracción básica de datos de currículos.  
+**Tareas**:
+- Probar carga con diferentes formatos y tamaños
+- Verificar precisión de la extracción con diversos tipos de currículum
+- Validar tratamiento de errores y excepciones
+- Probar flujo completo de carga y validación de datos
+- Documentar y reportar problemas encontrados
+
+---
+
+## Sprint 4 (16/05 - 30/05)
+
+### LTI-020: Backend - Extracción Avanzada con NLP
+**Tipo**: Desarrollo/Backend  
+**Estimación**: 3 días  
+**Relacionado con**: Historia 4 (Parte 3)  
+**Descripción**: Implementar extracción avanzada de datos usando técnicas de NLP.  
+**Tareas**:
+- Desarrollar algoritmos avanzados para extracción de habilidades
+- Implementar reconocimiento de entidades nombradas
+- Crear sistema de clasificación de experiencias y formaciones
+- Desarrollar mecanismo de detección de idiomas
+- Implementar optimización de rendimiento
+- Documentar implementación técnica
+
+### LTI-021: Backend - Gestión de Versiones de Currículum
+**Tipo**: Desarrollo/Backend  
+**Estimación**: 1 día  
+**Relacionado con**: Historia 4 (Parte 4)  
+**Descripción**: Desarrollar sistema completo de versionado de currículos.  
+**Tareas**:
+- Implementar sistema de historial de versiones
+- Crear APIs para comparación entre versiones
+- Desarrollar mecanismos de definición de currículum principal
+- Implementar archivado de versiones antiguas
+- Crear sistema de migración de datos entre versiones
+
+### LTI-022: Frontend - Gestión de Versiones
+**Tipo**: Desarrollo/Frontend  
+**Estimación**: 1 día  
+**Relacionado con**: Historia 4 (Parte 4)  
+**Descripción**: Crear interfaces para gestión avanzada de versiones de currículum.  
+**Tareas**:
+- Desarrollar interfaz de historial de versiones
+- Crear visualización comparativa entre versiones
+- Implementar sistema de selección de currículum principal
+- Desarrollar flujo de carga de nueva versión
+- Crear interfaz para archivado de versiones
+
+### LTI-023: Integración y Pruebas Finales
+**Tipo**: Desarrollo/Pruebas  
+**Estimación**: 4 días  
+**Relacionado con**: Todas las historias  
+**Descripción**: Integrar todos los componentes y realizar pruebas end-to-end del sistema.  
+**Tareas**:
+- Integrar todos los módulos desarrollados
+- Realizar pruebas de flujos completos
+- Identificar y corregir problemas de integración
+- Verificar consistencia visual y comportamental
+- Probar en diferentes navegadores y dispositivos
+- Validar requisitos no-funcionales (rendimiento, seguridad)
+
+### LTI-024: Preparación para Deploy
+**Tipo**: DevOps  
+**Estimación**: 1 día  
+**Descripción**: Preparar entorno y configuraciones para el deploy en producción.  
+**Tareas**:
+- Configurar entorno de producción
+- Crear scripts de automatización de deploy
+- Implementar monitoreo y alertas
+- Configurar backups y recuperación
+- Preparar documentación de operación
+- Realizar prueba de carga
+
+---
+
+## Fase de Lanzamiento (01/06 - 10/06)
+
+### LTI-025: Preparación Final para Lanzamiento
+**Tipo**: Gerencial  
+**Estimación**: 3 días  
+**Descripción**: Preparar todos los elementos necesarios para el lanzamiento del MVP.  
+**Tareas**:
+- Finalizar documentación de usuario
+- Preparar materiales de entrenamiento
+- Configurar entorno de soporte
+- Definir plan de comunicación de lanzamiento
+- Establecer KPIs y métricas de monitoreo
+
+### LTI-026: Pruebas de Aceptación del Usuario (UAT)
+**Tipo**: Pruebas  
+**Estimación**: 3 días  
+**Descripción**: Realizar pruebas con usuarios reales para validar el MVP.  
+**Tareas**:
+- Seleccionar grupo de usuarios para prueba
+- Preparar guiones de prueba
+- Conducir sesiones de prueba asistidas
+- Recopilar y analizar feedback
+- Documentar problemas y sugerencias
+
+### LTI-027: Correcciones Finales y Ajustes
+**Tipo**: Desarrollo  
+**Estimación**: 3 días  
+**Descripción**: Implementar correcciones basadas en el feedback de UAT.  
+**Tareas**:
+- Priorizar problemas reportados
+- Implementar correcciones críticas
+- Realizar ajustes de usabilidad
+- Optimizar rendimiento si es necesario
+- Ejecutar pruebas de regresión
+
+### LTI-028: Lanzamiento del MVP
+**Tipo**: Gerencial/DevOps  
+**Estimación**: 1 día  
+**Descripción**: Realizar el lanzamiento oficial del MVP en producción.  
+**Tareas**:
+- Ejecutar plan de deploy en producción
+- Realizar verificaciones post-deploy
+- Activar sistema de monitoreo
+- Comunicar lanzamiento a los stakeholders
+- Iniciar soporte post-lanzamiento
+
+
+---
+
+
 # Cronograma de Desarrollo
 
 Este cronograma representa la programación estimada para el desarrollo de las historias de usuario del Grupo 1 del MVP del Sistema LTI, con base en las estimaciones definidas previamente.
@@ -476,3 +850,13 @@ gantt
    * Final del Sprint 2: Interfaz de gestión funcionando
    * Final del Sprint 4: Todas las funcionalidades del MVP implementadas
    * 10/06/2025: Fecha prevista para lanzamiento del MVP
+
+
+
+
+
+
+
+
+
+   

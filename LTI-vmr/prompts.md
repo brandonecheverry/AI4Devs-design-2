@@ -74,15 +74,8 @@ Puedes incluir esta información en el documento inicialmente creado
 
 *Resultado: Inclusión del cronograma de desarrollo en el documento principal de historias de usuario.*
 
-## Prompt 10: Traducción al Español
 
-```
-Puedes traducir al español el documento md
-```
-
-*Resultado: Traducción completa del documento de historias de usuario, estimaciones y cronograma al español.*
-
-## Prompt 11: Lista de Prompts Solicitados
+## Prompt 10: Lista de Prompts Solicitados
 
 ```
 Puedes generar un documento md con la lista de prompts que solicité en este chat
@@ -90,13 +83,15 @@ Puedes generar un documento md con la lista de prompts que solicité en este cha
 
 *Resultado: Creación de este documento listando todos los prompts solicitados durante la conversación.*
 
-## Prompt 12: Traducción al Español de la Lista de Prompts
+## Prompt 11: Tickets de trabajo
 
 ```
-Puedes traducir al español
+Necesito ahora crear los tickets de trabajo para asignarlos al equipo
 ```
 
-*Resultado: Traducción de este documento de lista de prompts al español.*
+*Resultado: Creación de los tickets de trabajo.*
+
+
 
 ---
 
@@ -108,6 +103,6 @@ Este conjunto de prompts guió el proceso completo de:
 2. **Priorización** usando técnicas combinadas
 3. **Estimación de desarrollo** para cada historia
 4. **Planificación de cronograma** con visión de Gantt
-5. **Traducción al español** del documento final
+
 
 El resultado fue una documentación completa que puede ser utilizada para orientar el desarrollo del MVP del Sistema LTI, alineando expectativas entre equipo de desarrollo, gestores y stakeholders.
