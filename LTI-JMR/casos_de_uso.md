@@ -153,11 +153,19 @@ LTI es un **Sistema Avanzado de Seguimiento de Candidatos (ATS)** de nueva gener
 
 LTI representa la próxima generación de sistemas de seguimiento de candidatos, combinando la potencia de la inteligencia artificial con una experiencia de usuario excepcional para transformar radicalmente el proceso de reclutamiento. Al automatizar tareas repetitivas, facilitar la colaboración en tiempo real y proporcionar insights accionables, LTI no solo ahorra tiempo y recursos a las empresas, sino que también mejora significativamente la calidad de las contrataciones.
 
-## Introducción
-
-Estas User Stories están diseñadas para abarcar todas las funcionalidades descritas para la plataforma LTI. Cada historia se centra en un tipo de usuario específico y sugiere tareas y criterios de aceptación claros.
 
 ## User Stories
+
+### prompt:
+Actua como product Owner, tu mision es Genera Los User Story Para completar el desarrollo de la platafoma LTI, Tomate tu tiempo para crearlos
+Para redactarlos quiate con el siguiente formato:
+
+Estructura basica de una User Story
+Formato estándar: "Como [tipo de usuario], quiero [realizar una acción] para [obtener un beneficio]".
+Descripción: Una descripción concisa y en lenguaje natural de la funcionalidad que el usuario desea.
+Criterios de Aceptación: Condiciones específicas que deben cumplirse para considerar la User Story como "terminada", éstos deberian de seguir un formato similar a “Dado que” [contexto inicial], "cuando” [acción realizada], “entonces” [resultado esperado].
+Notas adicionales:  Notas que puedan ayudar al desarrollo de la historia
+Tareas: Lista de tareas y subtareas para que esta historia pueda ser completada
 
 ### User Story 1: Creación de Vacantes
 
