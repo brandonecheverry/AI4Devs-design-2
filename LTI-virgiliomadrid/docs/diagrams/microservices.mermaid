@@ -1,0 +1,129 @@
+graph TD
+    %% API Gateway and frontend
+    gateway[API Gateway]
+    web[Web App - React]
+    mobile[Mobile App]
+
+    %% Core Microservices
+    auth[Auth Service]
+    user[User Service]
+    job[Job Management Service]
+    candidate[Candidate Service]
+    pipeline[Pipeline Management Service]
+    match[AI Matching Service]
+    feedback[Feedback Service]
+    notification[Notification Service]
+    analytics[Analytics & Reporting Service]
+    integration[External Integrations Service]
+
+    %% Databases
+    userDB[(User DB)]
+    jobDB[(Job DB)]
+    candidateDB[(Candidate DB)]
+    pipelineDB[(Pipeline DB)]
+    matchDB[(AI Model DB)]
+    feedbackDB[(Feedback DB)]
+    analyticsDB[(Analytics DB)]
+
+    %% Message Queue
+    queue{Message Queue}
+
+    %% External Integrations
+    linkedin[LinkedIn API]
+    calendar[Google Calendar API]
+    docusign[DocuSign API]
+    email[Email Gateway]
+    storage[AWS S3]
+
+    %% Frontend connections
+    web --> gateway
+    mobile --> gateway
+
+    %% API Gateway to Services
+    gateway --> auth
+    gateway --> user
+    gateway --> job
+    gateway --> candidate
+    gateway --> pipeline
+    gateway --> match
+    gateway --> feedback
+    gateway --> notification
+    gateway --> analytics
+
+    %% Service to Database connections
+    auth --> userDB
+    user --> userDB
+    job --> jobDB
+    candidate --> candidateDB
+    pipeline --> pipelineDB
+    match --> matchDB
+    feedback --> feedbackDB
+    analytics --> analyticsDB
+
+    %% Message queue connections for async operations
+    notification --> queue
+    match --> queue
+    feedback --> queue
+    analytics --> queue
+    
+    queue --> notification
+    queue --> email
+
+    %% External integrations
+    integration --> linkedin
+    integration --> calendar
+    integration --> docusign
+    integration --> email
+
+    candidate --> storage
+    job --> storage
+    pipeline --> storage
+
+    %% Service interactions
+    job --> pipeline
+    candidate --> pipeline
+    match --> job
+    match --> candidate
+    pipeline --> match
+    pipeline --> feedback
+    feedback --> notification
+    analytics --> job
+    analytics --> candidate
+    analytics --> pipeline
+    
+    %% Service descriptions
+    auth:::service
+    user:::service
+    job:::service
+    candidate:::service
+    pipeline:::service
+    match:::service
+    feedback:::service
+    notification:::service
+    analytics:::service
+    integration:::service
+    
+    %% Styling
+    classDef service fill:#C5E1A5,stroke:#33691E,stroke-width:1px
+    classDef database fill:#BBDEFB,stroke:#0D47A1,stroke-width:1px
+    classDef client fill:#FFF59D,stroke:#F57F17,stroke-width:1px
+    classDef external fill:#E1BEE7,stroke:#4A148C,stroke-width:1px
+    classDef queue fill:#FFCC80,stroke:#E65100,stroke-width:1px
+    
+    %% Apply styles
+    web:::client
+    mobile:::client
+    gateway:::client
+    userDB:::database
+    jobDB:::database
+    candidateDB:::database
+    pipelineDB:::database
+    matchDB:::database
+    feedbackDB:::database
+    analyticsDB:::database
+    linkedin:::external
+    calendar:::external
+    docusign:::external
+    email:::external
+    storage:::external
+    queue:::queue

@@ -1,0 +1,49 @@
+flowchart TD
+    title[LTIR - Context Diagram]
+    title:::title
+
+    recruiter["Recruiter
+    --
+    Usa el sistema para gestionar
+    el proceso de contratación"]
+    recruiter:::person
+    
+    candidate["Candidate
+    --
+    Usa el sistema para aplicar
+    y recibir feedback"]
+    candidate:::person
+    
+    litr["Lead Talent Insight Recruit (LTIR)
+    --
+    Sistema para automatizar el proceso
+    de contratación mediante IA"]
+    litr:::system
+    
+    linkedin["LinkedIn
+    --
+    Fuente externa de
+    perfiles de candidatos"]
+    linkedin:::external_system
+    
+    google_calendar["Google Calendar
+    --
+    Gestión de horarios y
+    programación de entrevistas"]
+    google_calendar:::external_system
+    
+    docusign["DocuSign
+    --
+    Firma electrónica de contratos"]
+    docusign:::external_system
+    
+    recruiter -->|Gestiona vacantes y procesos| litr
+    candidate -->|Aplica y recibe feedback| litr
+    litr -->|Publicación de vacantes| linkedin
+    litr -->|Programación de entrevistas| google_calendar
+    litr -->|Firma de contratos| docusign
+    
+    classDef person fill:#08427B,color:#fff,stroke:#052E56,stroke-width:1px
+    classDef system fill:#1168BD,color:#fff,stroke:#0B4884,stroke-width:1px
+    classDef external_system fill:#999999,color:#fff,stroke:#6B6B6B,stroke-width:1px
+    classDef title font-size:18px,fill:none,stroke:none

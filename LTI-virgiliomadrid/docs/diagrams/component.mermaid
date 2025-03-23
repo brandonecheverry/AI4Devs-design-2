@@ -1,0 +1,51 @@
+graph TD
+    title[LTIR Component Diagram]
+    
+    subgraph Backend
+        auth[AuthService]
+        job[JobService]
+        candidate[CandidateService]
+        pipeline[PipelineService]
+        matching[MatchingService]
+        feedback[FeedbackService]
+        notification[NotificationService]
+        report[ReportService]
+    end
+    
+    frontend[Frontend]
+    db[(Database)]
+    ai[AI Service]
+    cache[(Redis)]
+
+    frontend --> auth
+    auth --> db
+    
+    job --> db
+    candidate --> db
+    pipeline --> db
+    matching --> ai
+    
+    feedback --> db
+    notification --> cache
+    report --> db
+    
+    %% Styling
+    classDef default fill:#f9f9f9,stroke:#333,stroke-width:1px
+    classDef title font-weight:bold,font-size:14px
+    classDef component fill:#bbdefb,stroke:#1976d2
+    classDef external fill:#c8e6c9,stroke:#388e3c
+    classDef database fill:#ffecb3,stroke:#ffa000,stroke-width:2px
+    
+    title:::title
+    auth:::component
+    job:::component
+    candidate:::component
+    pipeline:::component
+    matching:::component
+    feedback:::component
+    notification:::component
+    report:::component
+    frontend:::external
+    db:::database
+    ai:::external
+    cache:::database

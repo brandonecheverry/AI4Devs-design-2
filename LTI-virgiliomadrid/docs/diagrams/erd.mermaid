@@ -1,0 +1,202 @@
+erDiagram
+    %% Core entities for recruitment process
+    CANDIDATE {
+        uuid id PK
+        string name
+        string email
+        string phone
+        string resume_url
+        string linkedin_url
+        date created_at
+        date updated_at
+        boolean active
+    }
+    
+    JOB_POSTING {
+        uuid id PK
+        string title
+        text description
+        text requirements
+        string location
+        date posted_date
+        date expiration_date
+        enum status
+        uuid recruiter_id FK
+        uuid department_id FK
+    }
+    
+    RECRUITER {
+        uuid id PK
+        string name
+        string email
+        string phone
+        enum role
+        uuid organization_id FK
+        date created_at
+        boolean active
+    }
+    
+    %% Profile and skills
+    SKILL {
+        uuid id PK
+        string name
+        string category
+        boolean is_technical
+    }
+    
+    CANDIDATE_SKILL {
+        uuid id PK
+        uuid candidate_id FK
+        uuid skill_id FK
+        int level
+        int years_experience
+        boolean is_verified
+    }
+    
+    JOB_SKILL {
+        uuid id PK
+        uuid job_id FK
+        uuid skill_id FK
+        int required_level
+        boolean is_must_have
+    }
+    
+    EXPERIENCE {
+        uuid id PK
+        uuid candidate_id FK
+        string company
+        string position
+        date start_date
+        date end_date
+        text description
+        boolean current_job
+    }
+    
+    %% Application process
+    APPLICATION {
+        uuid id PK
+        uuid candidate_id FK
+        uuid job_id FK
+        date applied_date
+        enum stage
+        enum status
+        date last_updated
+    }
+    
+    PIPELINE_STAGE {
+        uuid id PK
+        string name
+        int order
+        string description
+        boolean is_automated
+    }
+    
+    %% Evaluations
+    INTERVIEW {
+        uuid id PK
+        uuid application_id FK
+        uuid recruiter_id FK
+        date scheduled_date
+        int duration_minutes
+        string meeting_url
+        enum interview_type
+        enum status
+        date completed_at
+    }
+    
+    ASSESSMENT {
+        uuid id PK
+        uuid application_id FK
+        enum assessment_type
+        date sent_date
+        date completed_date
+        float score
+        text result_summary
+    }
+    
+    MATCH_SCORE {
+        uuid id PK
+        uuid candidate_id FK
+        uuid job_id FK
+        float technical_score
+        float cultural_score
+        float experience_score
+        float overall_score
+        date calculated_at
+        json score_breakdown
+    }
+    
+    %% Communication
+    FEEDBACK {
+        uuid id PK
+        uuid application_id FK
+        uuid author_id FK
+        enum feedback_type
+        text content
+        int rating
+        date created_at
+    }
+    
+    NOTIFICATION {
+        uuid id PK
+        uuid recipient_id FK
+        enum notification_type
+        string title
+        text message
+        boolean is_read
+        date sent_at
+    }
+    
+    %% Analytics
+    REPORT {
+        uuid id PK
+        uuid recruiter_id FK
+        string title
+        enum report_type
+        json parameters
+        json result_data
+        date generated_at
+    }
+    
+    DEPARTMENT {
+        uuid id PK
+        string name
+        uuid organization_id FK
+    }
+    
+    ORGANIZATION {
+        uuid id PK
+        string name
+        string domain
+        date subscription_start
+        date subscription_end
+        enum plan_type
+    }
+
+    %% Relationships
+    CANDIDATE ||--o{ CANDIDATE_SKILL : "has"
+    CANDIDATE ||--o{ EXPERIENCE : "has"
+    CANDIDATE ||--o{ APPLICATION : "submits"
+    CANDIDATE ||--o{ MATCH_SCORE : "receives"
+    
+    SKILL ||--o{ CANDIDATE_SKILL : "associated with"
+    SKILL ||--o{ JOB_SKILL : "required by"
+    
+    JOB_POSTING ||--o{ JOB_SKILL : "requires"
+    JOB_POSTING ||--o{ APPLICATION : "receives"
+    JOB_POSTING ||--o{ MATCH_SCORE : "evaluates"
+    
+    RECRUITER ||--o{ JOB_POSTING : "creates"
+    RECRUITER ||--o{ INTERVIEW : "conducts"
+    RECRUITER ||--o{ FEEDBACK : "provides"
+    RECRUITER ||--o{ REPORT : "generates"
+    
+    APPLICATION ||--|| PIPELINE_STAGE : "belongs to"
+    APPLICATION ||--o{ INTERVIEW : "schedules"
+    APPLICATION ||--o{ ASSESSMENT : "requires"
+    APPLICATION ||--o{ FEEDBACK : "receives"
+    
+    ORGANIZATION ||--o{ DEPARTMENT : "has"
+    ORGANIZATION ||--o{ RECRUITER : "employs"
+    
+    DEPARTMENT ||--o{ JOB_POSTING : "posts"

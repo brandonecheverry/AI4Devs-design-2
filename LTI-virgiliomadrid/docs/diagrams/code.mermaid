@@ -1,0 +1,36 @@
+classDiagram
+    class MatchingService {
+        +scoreCandidate(candidate: Candidate) float
+        +compareSkills(candidateSkills: Skill[], jobSkills: Skill[]) float
+        +calculateFitScore(candidateProfile: CandidateProfile) float
+    }
+
+    class Candidate {
+        +id: string
+        +name: string
+        +skills: Skill[]
+        +experience: Experience[]
+    }
+
+    class JobPosting {
+        +id: string
+        +title: string
+        +requiredSkills: Skill[]
+        +location: string
+    }
+
+    class Skill {
+        +name: string
+        +level: int
+    }
+
+    class Experience {
+        +company: string
+        +duration: int
+    }
+
+    MatchingService --> Candidate
+    MatchingService --> JobPosting
+    Candidate --> Skill
+    Candidate --> Experience
+    JobPosting --> Skill

@@ -1,0 +1,57 @@
+graph TD
+    %% Title is handled with styling
+    title[LTIR - Container Diagram]
+    title:::title
+
+    %% External actors
+    recruiter[Recruiter]
+    candidate[Candidate]
+    
+    %% External systems
+    linkedin[LinkedIn]
+    google_calendar[Google Calendar]
+    docusign[DocuSign]
+
+    %% LTIR boundary as subgraph
+    subgraph LTIR[Lead Talent Insight Recruit]
+        react_frontend[Frontend - React.js]
+        flask_backend[Backend - Flask]
+        postgres[(PostgreSQL DB)]
+        file_storage[AWS S3]
+        redis[(Redis Cache)]
+        ai_service[AI Matching Service]
+        feedback_service[Feedback Service]
+        report_service[Report Service]
+        notification_service[Notification Service]
+    end
+    
+    %% Connections
+    recruiter --> react_frontend
+    candidate --> react_frontend
+    react_frontend --> flask_backend
+    flask_backend --> postgres
+    flask_backend --> redis
+    flask_backend --> ai_service
+    flask_backend --> notification_service
+    flask_backend --> feedback_service
+    flask_backend --> report_service
+    
+    flask_backend --> file_storage
+    flask_backend --> linkedin
+    flask_backend --> google_calendar
+    flask_backend --> docusign
+    
+    %% Styling
+    classDef title font-size:18px,fill:none,stroke:none
+    classDef person fill:#08427B,color:#fff
+    classDef external_system fill:#999999,color:#fff
+    classDef database fill:#1168BD,color:#fff,shape:cylinder
+    
+    %% Applying styles
+    recruiter:::person
+    candidate:::person
+    linkedin:::external_system
+    google_calendar:::external_system
+    docusign:::external_system
+    postgres:::database
+    redis:::database
