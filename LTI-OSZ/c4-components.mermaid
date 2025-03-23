@@ -1,0 +1,51 @@
+---
+title: "C4 Nivel 3: Diagrama de Componentes - LTI ATS"
+---
+flowchart TB
+    classDef componentClass fill:#85BBF0,color:black
+    classDef dbClass fill:#438DD5,color:white
+    
+    API["API Gateway"]
+    
+    subgraph microservices ["Microservicios"]
+        UserService["Servicio de Usuarios\n[Componente]"]:::componentClass
+        RequisitionService["Servicio de Requisiciones\n[Componente]"]:::componentClass
+        CandidateService["Servicio de Candidatos\n[Componente]"]:::componentClass
+        EvaluationService["Servicio de Evaluación\n[Componente]"]:::componentClass
+        WorkflowService["Servicio de Workflow\n[Componente]"]:::componentClass
+        CommunicationService["Servicio de Comunicaciones\n[Componente]"]:::componentClass
+        AnalyticsService["Servicio de Analytics\n[Componente]"]:::componentClass
+    end
+    
+    subgraph databases ["Bases de Datos"]
+        PostgreSQL["Base de Datos Principal\n[PostgreSQL]"]:::dbClass
+        MongoDB["Base de Datos Documental\n[MongoDB]"]:::dbClass
+        Redis["Cache\n[Redis]"]:::dbClass
+    end
+    
+    API --> UserService
+    API --> RequisitionService
+    API --> CandidateService
+    API --> EvaluationService
+    API --> WorkflowService
+    API --> CommunicationService
+    API --> AnalyticsService
+    
+    UserService -- "Lee/escribe datos\nde usuarios" --> PostgreSQL
+    UserService -- "Almacena sesiones" --> Redis
+    
+    RequisitionService -- "Lee/escribe datos\nde requisiciones" --> PostgreSQL
+    
+    CandidateService -- "Lee/escribe datos\nbásicos de candidatos" --> PostgreSQL
+    CandidateService -- "Almacena documentos\nde candidatos" --> MongoDB
+    
+    EvaluationService -- "Lee/escribe resultados\nde evaluaciones" --> PostgreSQL
+    EvaluationService -- "Almacena evaluaciones\ndetalladas" --> MongoDB
+    
+    WorkflowService -- "Lee/escribe configuración\nde workflows" --> PostgreSQL
+    
+    CommunicationService -- "Lee/escribe registro\nde comunicaciones" --> PostgreSQL
+    CommunicationService -- "Almacena contenido\nde mensajes" --> MongoDB
+    
+    AnalyticsService -- "Lee datos para\nreportes" --> PostgreSQL
+    AnalyticsService -- "Cachea resultados\nde análisis" --> Redis

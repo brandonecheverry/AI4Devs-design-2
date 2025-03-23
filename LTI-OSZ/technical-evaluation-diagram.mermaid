@@ -1,0 +1,25 @@
+---
+title: Caso de uso - Evaluación técnica de candidatos
+---
+sequenceDiagram
+    participant C as Candidato
+    participant S as Sistema LTI ATS
+    participant E as Evaluador técnico
+    
+    S->>C: Envía invitación a evaluación
+    C->>S: Accede al portal de evaluación
+    S->>C: Presenta instrucciones
+    S->>C: Muestra prueba técnica
+    C->>S: Completa prueba de código
+    S->>S: Evalúa automáticamente código
+    S->>S: Ejecuta tests unitarios
+    S->>S: Analiza calidad del código
+    S->>E: Notifica prueba completada
+    E->>S: Revisa código manualmente
+    E->>S: Evalúa solución técnica
+    E->>S: Califica habilidades técnicas
+    E->>S: Registra comentarios
+    S->>S: Calcula puntaje final
+    S->>C: Envía resultados y feedback
+    S->>S: Actualiza perfil del candidato
+    S->>S: Genera recomendación de avance

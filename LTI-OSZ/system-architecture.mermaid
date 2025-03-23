@@ -1,0 +1,99 @@
+---
+title: Arquitectura del sistema LTI ATS
+---
+flowchart TB
+    subgraph Clientes
+        Browser["Navegador Web"]
+        Mobile["Aplicación Móvil"]
+        External["Sistemas Externos"]
+    end
+    
+    subgraph "Frontend"
+        UI["Interfaz de Usuario React"]
+        CandidatePortal["Portal de Candidatos"]
+    end
+    
+    subgraph "API Gateway"
+        Gateway["API Gateway / Load Balancer"]
+        Auth["Autenticación & Autorización"]
+    end
+    
+    subgraph "Microservicios"
+        UserService["Servicio de Usuarios"]
+        RequisitionService["Servicio de Requisiciones"]
+        CandidateService["Servicio de Candidatos"]
+        EvaluationService["Servicio de Evaluación"]
+        WorkflowService["Servicio de Workflow"]
+        CommunicationService["Servicio de Comunicaciones"]
+        AnalyticsService["Servicio de Analytics"]
+    end
+    
+    subgraph "Integración"
+        Kafka["Apache Kafka"]
+        EventBus["Event Bus"]
+    end
+    
+    subgraph "Almacenamiento"
+        PostgreSQL["Base de Datos PostgreSQL"]
+        MongoDB["Base de Datos MongoDB"]
+        Redis["Cache Redis"]
+        S3["Almacenamiento S3"]
+    end
+    
+    subgraph "IA & Analytics"
+        ML["Motor de Matching"]
+        Analytics["Analytics Engine"]
+        Recommendation["Sistema de Recomendación"]
+    end
+    
+    Browser --> UI
+    Mobile --> UI
+    External --> Gateway
+    
+    UI --> Gateway
+    CandidatePortal --> Gateway
+    
+    Gateway --> Auth
+    Auth --> UserService
+    
+    Gateway --> UserService
+    Gateway --> RequisitionService
+    Gateway --> CandidateService
+    Gateway --> EvaluationService
+    Gateway --> WorkflowService
+    Gateway --> CommunicationService
+    Gateway --> AnalyticsService
+    
+    UserService <--> EventBus
+    RequisitionService <--> EventBus
+    CandidateService <--> EventBus
+    EvaluationService <--> EventBus
+    WorkflowService <--> EventBus
+    CommunicationService <--> EventBus
+    AnalyticsService <--> EventBus
+    
+    EventBus <--> Kafka
+    
+    UserService --> PostgreSQL
+    RequisitionService --> PostgreSQL
+    CandidateService --> PostgreSQL
+    CandidateService --> MongoDB
+    EvaluationService --> PostgreSQL
+    EvaluationService --> MongoDB
+    WorkflowService --> PostgreSQL
+    CommunicationService --> MongoDB
+    AnalyticsService --> PostgreSQL
+    
+    UserService --> Redis
+    RequisitionService --> Redis
+    CandidateService --> Redis
+    CommunicationService --> Redis
+    
+    CandidateService --> S3
+    EvaluationService --> S3
+    
+    CandidateService --> ML
+    RequisitionService --> ML
+    ML --> Recommendation
+    
+    AnalyticsService --> Analytics

@@ -1,0 +1,43 @@
+---
+title: "C4 Nivel 2: Diagrama de Contenedores - LTI ATS"
+---
+flowchart TB
+    classDef userClass fill:#08427B,color:white
+    classDef containerClass fill:#438DD5,color:white
+    classDef dbClass fill:#438DD5,color:white
+    classDef externalClass fill:#999999,color:white
+    
+    Reclutador["Reclutador\n[Persona]"]:::userClass
+    GerenteContratacion["Gerente de Contratación\n[Persona]"]:::userClass
+    Candidato["Candidato\n[Persona]"]:::userClass
+    
+    subgraph LTI ["Sistema LTI ATS"]
+        WebApp["Aplicación Web\n[Contenedor: React]"]:::containerClass
+        CandidatePortal["Portal de Candidatos\n[Contenedor: React]"]:::containerClass
+        APIGateway["API Gateway\n[Contenedor: Node.js/Express]"]:::containerClass
+        
+        Microservices["Microservicios\n[Contenedor: Node.js/Express]"]:::containerClass
+        IAEngine["Motor IA de Matching\n[Contenedor: Python/Flask]"]:::containerClass
+        
+        PostgreSQL["Base de Datos Principal\n[Contenedor: PostgreSQL]"]:::dbClass
+        MongoDB["Base de Datos Documental\n[Contenedor: MongoDB]"]:::dbClass
+        S3["Almacenamiento de Archivos\n[Contenedor: AWS S3]"]:::dbClass
+    end
+    
+    External["Sistemas Externos\n[Sistema]"]:::externalClass
+    
+    Reclutador -- "Usa\n[HTTPS]" --> WebApp
+    GerenteContratacion -- "Usa\n[HTTPS]" --> WebApp
+    Candidato -- "Usa\n[HTTPS]" --> CandidatePortal
+    
+    WebApp -- "Llama API\n[HTTPS]" --> APIGateway
+    CandidatePortal -- "Llama API\n[HTTPS]" --> APIGateway
+    
+    APIGateway -- "Enruta peticiones\n[HTTPS]" --> Microservices
+    Microservices -- "Consulta\n[RestAPI]" --> IAEngine
+    
+    Microservices -- "Lee/Escribe\n[JDBC]" --> PostgreSQL
+    Microservices -- "Lee/Escribe\n[MongoDB Driver]" --> MongoDB
+    Microservices -- "Lee/Escribe\n[AWS SDK]" --> S3
+    
+    APIGateway -- "Integra con\n[API/Webhooks]" --> External
