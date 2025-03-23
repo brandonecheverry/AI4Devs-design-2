@@ -145,3 +145,26 @@ Please expand on each of the features.
 * Generate a C4 "container" diagram for the system. Use PlantUML with the built-in C4 library.
 * Generate a C4 "component" diagram for the "AI Microservices" component. Use PlantUML with the built-in C4 library.
 
+# Week 2 --- we're going deeper!
+
+## Prompt-n
+
+You're a business analyst and I want you to read this brief of the ATS system. Then ask me if anything is unclear or ambiguous (but not necessarily to fill in all knowledge gaps).
+
+## Prompt-n
+
+I want you to come up with 15 user stories for the system. Use the Job Story Framework as much as possible, but if a specific story is better suited to the Outcome-Oriented Hypothesis format, use that instead.
+At LTI, we're inspired by Lean Startup and want to validate our assumptions as quickly as possible. Prioritise the stories so that we can start to learn as soon as possible.
+
+## Prompt-n
+
+Yes, please present this in Markdown like this 
+```
+## US-1 short title (high/mid/low learning opportunity)
+The filled template
+Any other notes or context you see fit
+```
+Be creative with that format if you want, as long as you're consistent.
+
+## Prompt-n
+
