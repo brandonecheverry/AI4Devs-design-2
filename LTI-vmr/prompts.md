@@ -1,4 +1,4 @@
-# Lista de Prompts Solicitados - Proyecto LTI
+# Lista de Prompts Solicitados - Proyecto LTI utilizando Claude 3.7 Sonnet
 
 Este documento contiene los prompts solicitados durante la conversación para la creación de las historias de usuario y planificación del MVP del Sistema Lean Talent Intelligence (LTI).
 
