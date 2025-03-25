@@ -1,0 +1,216 @@
+---
+title: "C4 Nivel 4: Modelo de Datos - LTI ATS"
+---
+classDiagram
+    class Usuario {
+        +int id_usuario
+        +string nombre
+        +string apellido
+        +string email
+        +string contraseña
+        +string rol
+        +date fecha_creacion
+        +bool activo
+        +crearRequisicion()
+        +evaluarCandidato()
+        +generarOferta()
+    }
+    
+    class Requisicion {
+        +int id_requisicion
+        +string titulo
+        +string descripcion
+        +date fecha_publicacion
+        +date fecha_cierre
+        +string estado
+        +string departamento
+        +int nivel_experiencia
+        +decimal salario_min
+        +decimal salario_max
+        +bool remoto
+        +string ubicacion
+        +int id_usuario_creador
+        +int id_workflow
+        +publicarVacante()
+        +cerrarVacante()
+        +obtenerCandidatos()
+    }
+    
+    class Workflow {
+        +int id_workflow
+        +string nombre
+        +string descripcion
+        +bool activo
+        +date fecha_creacion
+        +int id_usuario_creador
+        +agregarEtapa()
+        +activarWorkflow()
+        +aplicarARequisicion()
+    }
+    
+    class Etapa {
+        +int id_etapa
+        +string nombre
+        +string descripcion
+        +int orden
+        +bool requiere_aprobacion
+        +string tipo
+        +int id_workflow
+        +cambiarOrden()
+        +configurarAprobacion()
+    }
+    
+    class Candidato {
+        +int id_candidato
+        +string nombre
+        +string apellido
+        +string email
+        +string telefono
+        +string ubicacion
+        +string linkedin
+        +string github
+        +string portfolio
+        +date fecha_registro
+        +string fuente
+        +bool activo
+        +aplicarAVacante()
+        +actualizarPerfil()
+        +subirDocumento()
+    }
+    
+    class Aplicacion {
+        +int id_aplicacion
+        +date fecha_aplicacion
+        +string estado
+        +string notas
+        +decimal calificacion_total
+        +int id_candidato
+        +int id_requisicion
+        +int id_etapa_actual
+        +avanzarEtapa()
+        +calcularCalificacion()
+        +generarOferta()
+    }
+    
+    class Evaluacion {
+        +int id_evaluacion
+        +date fecha_evaluacion
+        +decimal calificacion
+        +string comentarios
+        +int id_aplicacion
+        +int id_etapa
+        +int id_usuario_evaluador
+        +registrarCalificacion()
+        +agregarComentario()
+    }
+    
+    class Habilidad {
+        +int id_habilidad
+        +string nombre
+        +string categoria
+        +string nivel
+        +string descripcion
+    }
+    
+    class RequisicionHabilidad {
+        +int id_requisicion
+        +int id_habilidad
+        +int nivel_requerido
+        +bool obligatorio
+    }
+    
+    class CandidatoHabilidad {
+        +int id_candidato
+        +int id_habilidad
+        +int nivel_declarado
+        +int nivel_validado
+        +string certificaciones
+        +validarHabilidad()
+    }
+    
+    class PruebaTecnica {
+        +int id_prueba
+        +string titulo
+        +string descripcion
+        +string tipo
+        +int duracion
+        +string dificultad
+        +string instrucciones
+        +blob contenido
+        +int id_habilidad
+        +asignarACandidato()
+        +evaluarAutomaticamente()
+    }
+    
+    class EvaluacionTecnica {
+        +int id_evaluacion_tecnica
+        +date fecha_inicio
+        +date fecha_fin
+        +decimal puntuacion_automatica
+        +decimal puntuacion_manual
+        +string codigo_solucion
+        +string comentarios
+        +int id_prueba
+        +int id_aplicacion
+        +calcularPuntuacionFinal()
+        +revisarCodigo()
+    }
+    
+    class Comunicacion {
+        +int id_comunicacion
+        +date fecha_envio
+        +string tipo
+        +string asunto
+        +text contenido
+        +bool leido
+        +date fecha_lectura
+        +int id_aplicacion
+        +int id_usuario_emisor
+        +marcarComoLeido()
+        +enviarRecordatorio()
+    }
+    
+    class Oferta {
+        +int id_oferta
+        +date fecha_creacion
+        +date fecha_expiracion
+        +decimal salario_ofrecido
+        +string beneficios
+        +date fecha_inicio
+        +string estado
+        +string comentarios
+        +int id_aplicacion
+        +int id_usuario_creador
+        +enviarOferta()
+        +registrarRespuesta()
+        +negociarTerminos()
+    }
+    
+    Usuario "1" -- "0..*" Requisicion : crea
+    Usuario "1" -- "0..*" Workflow : crea
+    Usuario "1" -- "0..*" Evaluacion : realiza
+    Usuario "1" -- "0..*" Comunicacion : envía
+    Usuario "1" -- "0..*" Oferta : genera
+    
+    Workflow "1" -- "1..*" Etapa : contiene
+    Workflow "1" -- "0..*" Requisicion : define_proceso
+    
+    Etapa "1" -- "0..*" Evaluacion : asociada_a
+    Etapa "1" -- "0..*" Aplicacion : etapa_actual
+    
+    Candidato "1" -- "0..*" Aplicacion : realiza
+    Candidato "1" -- "0..*" CandidatoHabilidad : posee
+    
+    Requisicion "1" -- "0..*" Aplicacion : recibe
+    Requisicion "1" -- "0..*" RequisicionHabilidad : requiere
+    
+    Aplicacion "1" -- "0..*" Evaluacion : tiene
+    Aplicacion "1" -- "0..*" EvaluacionTecnica : incluye
+    Aplicacion "1" -- "0..*" Comunicacion : genera
+    Aplicacion "1" -- "0..1" Oferta : resulta_en
+    
+    Habilidad "1" -- "0..*" RequisicionHabilidad : es_requerida_en
+    Habilidad "1" -- "0..*" CandidatoHabilidad : es_poseida_por
+    Habilidad "1" -- "0..*" PruebaTecnica : evaluada_por
+    
+    PruebaTecnica "1" -- "0..*" EvaluacionTecnica : utilizada_en

@@ -1,0 +1,27 @@
+---
+title: "C4 Nivel 1: Diagrama de Contexto - LTI ATS"
+---
+flowchart TB
+    classDef userClass fill:#08427B,color:white
+    classDef systemClass fill:#1168BD,color:white
+    classDef externalClass fill:#999999,color:white
+    
+    Reclutador["Reclutador\n[Persona]"]:::userClass
+    GerenteContratacion["Gerente de Contratación\n[Persona]"]:::userClass
+    Candidato["Candidato\n[Persona]"]:::userClass
+    GerenteRRHH["Gerente de RRHH\n[Persona]"]:::userClass
+    
+    LTI["Sistema LTI ATS\n[Software]"]:::systemClass
+    
+    JobBoards["Portales de Empleo\n[Sistema Externo]"]:::externalClass
+    HRIS["Sistema HRIS\n[Sistema Externo]"]:::externalClass
+    EmailSystem["Sistema de Correo\n[Sistema Externo]"]:::externalClass
+    
+    Reclutador -- "Gestiona procesos de reclutamiento" --> LTI
+    GerenteContratacion -- "Evalúa candidatos y aprueba requisiciones" --> LTI
+    Candidato -- "Aplica a vacantes y realiza pruebas técnicas" --> LTI
+    GerenteRRHH -- "Analiza métricas y reportes" --> LTI
+    
+    LTI -- "Publica vacantes" --> JobBoards
+    LTI -- "Sincroniza datos de empleados" --> HRIS
+    LTI -- "Envía comunicaciones" --> EmailSystem

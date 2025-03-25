@@ -1,0 +1,34 @@
+---
+title: Caso de uso - Gestión del proceso de reclutamiento
+---
+sequenceDiagram
+    participant G as Gerente de contratación
+    participant R as Reclutador
+    participant S as Sistema LTI ATS
+    participant C as Candidato
+    
+    G->>S: Crea requisición
+    G->>S: Define requisitos técnicos
+    G->>S: Establece etapas de evaluación
+    R->>S: Revisa y publica vacante
+    S->>C: Publica en portales de empleo
+    C->>S: Envía solicitud
+    S->>C: Confirma recepción
+    S->>R: Notifica nueva solicitud
+    R->>S: Revisa perfil
+    R->>S: Preselecciona candidato
+    S->>C: Envía prueba técnica
+    C->>S: Completa prueba técnica
+    S->>R: Notifica prueba completada
+    R->>S: Evalúa resultados
+    R->>S: Programa entrevista
+    S->>C: Envía invitación a entrevista
+    C->>S: Confirma asistencia
+    G->>S: Realiza entrevista técnica
+    G->>S: Registra evaluación
+    R->>S: Consolida evaluaciones
+    R->>S: Genera oferta
+    S->>C: Envía oferta
+    C->>S: Acepta oferta
+    S->>R: Notifica aceptación
+    R->>S: Inicia proceso de contratación

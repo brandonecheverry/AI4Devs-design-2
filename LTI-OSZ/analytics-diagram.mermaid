@@ -1,0 +1,25 @@
+---
+title: Caso de uso - Análisis y reportes de reclutamiento
+---
+sequenceDiagram
+    participant G as Gerente de RRHH
+    participant S as Sistema LTI ATS
+    participant A as Analista de reclutamiento
+    
+    G->>S: Accede a dashboard
+    S->>G: Muestra KPIs principales
+    G->>S: Solicita reporte detallado
+    S->>G: Genera visualización de datos
+    G->>S: Aplica filtros por departamento
+    S->>G: Actualiza visualización
+    G->>S: Solicita tendencias históricas
+    S->>G: Muestra gráficos comparativos
+    G->>A: Solicita análisis específico
+    A->>S: Configura reporte personalizado
+    S->>A: Genera datos para análisis
+    A->>S: Guarda configuración de reporte
+    A->>S: Programa reporte recurrente
+    S->>A: Confirma programación
+    A->>G: Comparte hallazgos y recomendaciones
+    G->>S: Exporta datos para presentación
+    S->>G: Descarga informe en formato solicitado

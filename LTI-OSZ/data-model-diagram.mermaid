@@ -1,0 +1,184 @@
+erDiagram
+    USUARIO {
+        int id_usuario PK
+        string nombre
+        string apellido
+        string email
+        string contrasena
+        string rol
+        date fecha_creacion
+        bool activo
+    }
+    
+    REQUISICION {
+        int id_requisicion PK
+        string titulo
+        string descripcion
+        date fecha_publicacion
+        date fecha_cierre
+        string estado
+        string departamento
+        int nivel_experiencia
+        decimal salario_min
+        decimal salario_max
+        bool remoto
+        string ubicacion
+        int id_usuario_creador FK
+        int id_workflow FK
+    }
+    
+    WORKFLOW {
+        int id_workflow PK
+        string nombre
+        string descripcion
+        bool activo
+        date fecha_creacion
+        int id_usuario_creador FK
+    }
+    
+    ETAPA {
+        int id_etapa PK
+        string nombre
+        string descripcion
+        int orden
+        bool requiere_aprobacion
+        string tipo
+        int id_workflow FK
+    }
+    
+    CANDIDATO {
+        int id_candidato PK
+        string nombre
+        string apellido
+        string email
+        string telefono
+        string ubicacion
+        string linkedin
+        string github
+        string portfolio
+        date fecha_registro
+        string fuente
+        bool activo
+    }
+    
+    APLICACION {
+        int id_aplicacion PK
+        date fecha_aplicacion
+        string estado
+        string notas
+        decimal calificacion_total
+        int id_candidato FK
+        int id_requisicion FK
+        int id_etapa_actual FK
+    }
+    
+    EVALUACION {
+        int id_evaluacion PK
+        date fecha_evaluacion
+        decimal calificacion
+        string comentarios
+        int id_aplicacion FK
+        int id_etapa FK
+        int id_usuario_evaluador FK
+    }
+    
+    HABILIDAD {
+        int id_habilidad PK
+        string nombre
+        string categoria
+        string nivel
+        string descripcion
+    }
+    
+    REQUISICION_HABILIDAD {
+        int id_requisicion FK
+        int id_habilidad FK
+        int nivel_requerido
+        bool obligatorio
+    }
+    
+    CANDIDATO_HABILIDAD {
+        int id_candidato FK
+        int id_habilidad FK
+        int nivel_declarado
+        int nivel_validado
+        string certificaciones
+    }
+    
+    PRUEBA_TECNICA {
+        int id_prueba PK
+        string titulo
+        string descripcion
+        string tipo
+        int duracion
+        string dificultad
+        string instrucciones
+        blob contenido
+        int id_habilidad FK
+    }
+    
+    EVALUACION_TECNICA {
+        int id_evaluacion_tecnica PK
+        date fecha_inicio
+        date fecha_fin
+        decimal puntuacion_automatica
+        decimal puntuacion_manual
+        string codigo_solucion
+        string comentarios
+        int id_prueba FK
+        int id_aplicacion FK
+    }
+    
+    COMUNICACION {
+        int id_comunicacion PK
+        date fecha_envio
+        string tipo
+        string asunto
+        text contenido
+        bool leido
+        date fecha_lectura
+        int id_aplicacion FK
+        int id_usuario_emisor FK
+    }
+    
+    OFERTA {
+        int id_oferta PK
+        date fecha_creacion
+        date fecha_expiracion
+        decimal salario_ofrecido
+        string beneficios
+        date fecha_inicio
+        string estado
+        string comentarios
+        int id_aplicacion FK
+        int id_usuario_creador FK
+    }
+    
+    USUARIO ||--o{ REQUISICION : crea
+    USUARIO ||--o{ WORKFLOW : crea
+    USUARIO ||--o{ EVALUACION : realiza
+    USUARIO ||--o{ COMUNICACION : envia
+    USUARIO ||--o{ OFERTA : genera
+    
+    WORKFLOW ||--o{ ETAPA : contiene
+    WORKFLOW ||--o{ REQUISICION : define_proceso
+    
+    ETAPA ||--o{ EVALUACION : asociada_a
+    ETAPA ||--o{ APLICACION : etapa_actual
+    
+    CANDIDATO ||--o{ APLICACION : realiza
+    CANDIDATO ||--o{ CANDIDATO_HABILIDAD : posee
+    
+    REQUISICION ||--o{ APLICACION : recibe
+    REQUISICION ||--o{ REQUISICION_HABILIDAD : requiere
+    
+    APLICACION ||--o{ EVALUACION : tiene
+    APLICACION ||--o{ EVALUACION_TECNICA : incluye
+    APLICACION ||--o{ COMUNICACION : genera
+    APLICACION ||--o{ OFERTA : resulta_en
+    
+    HABILIDAD ||--o{ REQUISICION_HABILIDAD : es_requerida_en
+    HABILIDAD ||--o{ CANDIDATO_HABILIDAD : es_poseida_por
+    HABILIDAD ||--o{ PRUEBA_TECNICA : evaluada_por
+    
+    PRUEBA_TECNICA ||--o{ EVALUACION_TECNICA : utilizada_en
