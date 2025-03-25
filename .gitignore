@@ -5,3 +5,5 @@
 **/.specstory
 **/node_modules
 **/prompts_master.md
+.cursor/
+.specstory/
