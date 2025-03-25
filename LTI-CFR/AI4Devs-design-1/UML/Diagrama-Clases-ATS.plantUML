@@ -1,0 +1,79 @@
+@startuml Diagrama-Clases-ATS
+
+package "Sistema ATS con IA para LTI" {
+    class Sistema {
+        +gestionar_vacantes()
+        +organizar_candidaturas()
+        +seguir_proceso_seleccion()
+        +detectar_talento_predictivamente()
+        +acelerar_pipeline_contratacion()
+        +evaluar_adaptativamente()
+    }
+
+    class Reclutador {
+        +id: Integer
+        +nombre: String
+        +email: String
+        +departamento: String
+        +crear_vacante()
+        +revisar_candidaturas()
+        +programar_entrevistas()
+        +registrar_feedback()
+    }
+
+    class Gerente {
+        +id: Integer
+        +nombre: String
+        +departamento: String
+        +revisar_candidatos_finales()
+        +aprobar_contratacion()
+    }
+
+    class Candidato {
+        +id: Integer
+        +nombre: String
+        +email: String
+        +telefono: String
+        +experiencia: List
+        +habilidades: List
+        +aplicar_vacante()
+        +completar_pruebas()
+        +asistir_entrevista()
+    }
+
+    class Vacante {
+        +id: Integer
+        +titulo: String
+        +descripcion: String
+        +requisitos: List
+        +departamento: String
+        +ubicacion: String
+        +estado: Enum
+        +fecha_publicacion: Date
+        +fecha_cierre: Date
+    }
+
+    class Candidatura {
+        +id: Integer
+        +id_candidato: Integer
+        +id_vacante: Integer
+        +fecha_aplicacion: Date
+        +estado: Enum
+        +cv_documento: Blob
+        +etapa_actual: Enum
+        +evaluaciones: List
+        +cambiar_estado()
+        +programar_evento()
+        +registrar_evaluacion()
+    }
+}
+
+' Relaciones
+Reclutador --> Sistema : utiliza
+Gerente --> Sistema : utiliza
+Candidato --> Sistema : interactúa
+Sistema --> Vacante : gestiona
+Sistema --> Candidatura : procesa
+Candidato "1" --> "0..*" Candidatura : genera
+Vacante "1" --> "0..*" Candidatura : recibe
+@enduml
