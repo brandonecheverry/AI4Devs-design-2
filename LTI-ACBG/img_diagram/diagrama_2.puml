@@ -1,0 +1,17 @@
+@startmindmap
+* Gestión de Producto - LTI ATS
+** Hoja de Ruta del Producto
+*** MVP: Sistema de Gestión de Candidatos (ATS)
+**** Épica: Gestión de Vacantes
+***** Historia de Usuario: Publicación y Gestión de Vacantes
+****** "Como Reclutador, quiero crear, editar y publicar vacantes para atraer candidatos calificados."
+****** Tickets de Trabajo:
+******* TICKET-001: Diseño del Modelo de Datos para Vacantes (5 SP)
+******* TICKET-002: Creación de API para Gestión de Vacantes (8 SP)
+******* TICKET-003: Desarrollo del Frontend para Creación/Edición de Vacantes (8 SP)
+******* TICKET-004: Publicación y Listado en Frontend (5 SP)
+******* TICKET-005: Implementación de Permisos y Seguridad (5 SP)
+****** Backlog de Sprint:
+******* Sprint 1: TICKET-001, TICKET-002, TICKET-005
+******* Sprint 2: TICKET-003, TICKET-004
+@endmindmap
